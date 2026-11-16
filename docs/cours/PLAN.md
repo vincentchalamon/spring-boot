@@ -17,6 +17,8 @@ Construire, étape par étape, l'API REST du gestionnaire de recettes décrit da
 
 Chaque étape indique : **objectif**, **notions** (avec l'équivalent Symfony), **livrable**, **validation** (critère vérifiable).
 
+Accompagnement dégressif (détail dans `CLAUDE.md`) : guidé aux chapitres 0 et 1 (exemples complets à adapter), semi-guidé aux chapitres 2 à 4, autonome ensuite. Syntaxe de référence : [mémo Java pour un développeur PHP](memo-java-pour-php.md), complété au fil des chapitres.
+
 ## Avancement
 
 | Chapitre | Jours | Statut |
@@ -318,6 +320,7 @@ Fil rouge : les types de valeur de la recette (type, régime, unité, quantité,
 | 2026-11-16 | IDE : VSCode. |
 | 2026-11-16 | Mise à l'échelle des portions et conversion métrique/US (quantités et température du four en °C/°F) à la charge du front (exigence hors-ligne). Ingrédient : nom + précision optionnelle + quantité optionnelle. L'API stocke les quantités en g, ml, c. à café, c. à soupe ou en unités non convertibles (pièce, pincée...), liste fermée fixée à l'étape 1.2 ; pas d'endpoint de référentiel des unités, la liste des codes est documentée par le contrat OpenAPI. |
 | 2026-11-16 | Version du JDK fixée par projet via `.sdkmanrc` (créé en 0.1, committé en 0.3). |
+| 2026-11-16 | Accompagnement dégressif (guidé ch. 0-1 avec exemples complets à adapter, semi-guidé ch. 2-4, autonome ensuite) et mémos de syntaxe `memo-*.md`. |
 
 ## Journal
 

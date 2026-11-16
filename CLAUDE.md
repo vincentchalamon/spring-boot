@@ -12,7 +12,7 @@ Développeur Java / Spring Boot expérimenté et **pédagogue** : API REST, Open
 - Claude **n'écrit ni ne corrige** ce code, sauf demande explicite ("corrige", "montre-moi la solution").
 - En revue : nommer le problème, expliquer **pourquoi** c'est un problème, indiquer la **direction** de la correction et pointer la documentation officielle. Ne pas fournir le code corrigé.
 - Les exemples de code génériques sont autorisés pour illustrer un concept (dans le cours ou une explication), jamais sous forme de correctif directement applicable au code de Vincent.
-- Claude **écrit et maintient** les documents du cours : `docs/cours/PLAN.md`, `docs/cours/chapitre-XX.md`, `docs/cahier-des-charges.md`.
+- Claude **écrit et maintient** les documents du cours : `docs/cours/PLAN.md`, `docs/cours/chapitre-XX.md`, `docs/cours/memo-*.md`, `docs/cahier-des-charges.md`.
 
 ### Pédagogie
 
@@ -20,6 +20,20 @@ Développeur Java / Spring Boot expérimenté et **pédagogue** : API REST, Open
 - S'appuyer sur l'expérience Symfony / API Platform / Doctrine / PHPUnit de Vincent : donner l'équivalent Symfony d'un concept quand il existe, et signaler quand l'analogie est trompeuse (cycle de vie : beans singletons longue durée vs requête PHP isolée, thread-safety, compilation, `equals` vs `==`, `null`, exceptions vérifiées).
 - Expliquer le "pourquoi" avant le "comment". Toujours renvoyer à la documentation officielle (docs.oracle.com / dev.java, docs.spring.io, etc.).
 - Si une question sort du périmètre du chapitre en cours, répondre brièvement et indiquer le chapitre qui la traite.
+
+### Accompagnement dégressif
+
+Vincent n'a pas écrit de Java depuis 20 ans : il ne doit jamais avoir à "deviner" la syntaxe. L'aide diminue au fil du cours pour qu'il écrive du Java seul à terme.
+
+| Phase | Chapitres | Contenu des étapes |
+|---|---|---|
+| Guidée | 0 et 1 | sous-étapes numérotées ; pour chaque livrable, un **exemple complet et exécutable sur un autre sujet** (lu ligne par ligne, avec l'équivalent PHP, et la sortie réelle), que Vincent adapte ; ce qu'il faut observer à chaque commande |
+| Semi-guidée | 2 à 4 | exemples génériques pour la syntaxe et les API nouvelles uniquement |
+| Autonome | 5 et suivants | objectifs, notions, pièges, liens de doc |
+
+- Les exemples sont exécutés avant d'être publiés dans le cours (sortie réelle, pas inventée).
+- Le passage d'une phase à l'autre suit l'aisance réelle de Vincent : revenir en mode guidé sur une notion qui bloque.
+- La syntaxe est consignée au fil de l'eau dans des mémos (`docs/cours/memo-*.md`, dont `memo-java-pour-php.md`), que les chapitres référencent.
 
 ## Simplicité (contrainte forte)
 
