@@ -54,7 +54,7 @@ Chaque étape indique : **objectif**, **notions** (avec l'équivalent Symfony), 
 - [ ] **0.3 Conventions du dépôt**
   - Objectif : poser le cadre GitHub Flow avant d'écrire du code.
   - Notions : protection de branche, modèle de PR, `.gitignore` Java/Maven/VSCode.
-  - Livrable : `.gitignore`, `.github/pull_request_template.md`, protection de `main` (PR obligatoire ; le statut CI requis sera ajouté au chapitre 2).
+  - Livrable : `.gitignore`, `.sdkmanrc` (créé en 0.1), `.github/pull_request_template.md`, protection de `main` (PR obligatoire ; le statut CI requis sera ajouté au chapitre 2).
   - Validation : un push direct sur `main` est refusé ; première PR mergée.
 
 ## Chapitre 1 - Java moderne, sans framework
@@ -317,6 +317,7 @@ Fil rouge : les types de valeur de la recette (type, régime, unité, quantité,
 | 2026-11-16 | GitHub Flow : une PR par étape, revue par une GitHub Action Claude qui explique sans corriger. |
 | 2026-11-16 | IDE : VSCode. |
 | 2026-11-16 | Mise à l'échelle des portions et conversion métrique/US (quantités et température du four en °C/°F) à la charge du front (exigence hors-ligne). Ingrédient : nom + précision optionnelle + quantité optionnelle. L'API stocke les quantités en g, ml, c. à café, c. à soupe ou en unités non convertibles (pièce, pincée...), liste fermée fixée à l'étape 1.2 ; pas d'endpoint de référentiel des unités, la liste des codes est documentée par le contrat OpenAPI. |
+| 2026-11-16 | Version du JDK fixée par projet via `.sdkmanrc` (créé en 0.1, committé en 0.3). |
 
 ## Journal
 
