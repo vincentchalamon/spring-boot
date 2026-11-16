@@ -72,8 +72,8 @@ Apport au projet : configuration VSCode partagée, `.gitignore`, modèle de PR, 
 - [ ] **0.2 VSCode pour Java**
   - Objectif : un IDE productif et une configuration partagée via le dépôt.
   - Notions : Language Server Java (Eclipse JDT LS), extensions, réglages de workspace.
-  - Extensions : Extension Pack for Java (Red Hat, Microsoft), Spring Boot Extension Pack, Container Tools, REST Client ou httpYac (fichiers `.http` versionnés), SonarQube for IDE, EditorConfig, GitLens, XML (Red Hat, pour `pom.xml`), YAML.
-  - Livrable : `.vscode/extensions.json` (recommandations), `.vscode/settings.json` (JDK du projet, formatage à l'enregistrement, exclusions), `.editorconfig`.
+  - Extensions : Extension Pack for Java (Red Hat, Microsoft), Spring Boot Extension Pack, Container Tools, httpYac (fichiers `.http` versionnés), SonarQube for IDE, EditorConfig, GitLens, XML (Red Hat, pour `pom.xml`), YAML.
+  - Livrable : `.vscode/extensions.json` (recommandations), `.vscode/settings.json` (formatage et organisation des imports à l'enregistrement ; le JDK reste dans les réglages utilisateur), `.editorconfig`.
   - Validation : VSCode propose les extensions à l'ouverture ; le `HelloWorld` se lance et se débogue depuis l'IDE (point d'arrêt atteint).
 
 - [ ] **0.3 Conventions du dépôt**
@@ -394,4 +394,5 @@ Apport au projet : logs structurés, métriques, image OCI et CI complète.
 | 2026-11-16 | Trois bilans en fin de phase, chacun une vraie fonctionnalité : bilan 1 (record `Step`), bilan 2 (autocomplétion, retirée de l'étape 7.3), bilan 3 ("Dans mon frigo", jusque-là idée future du cahier des charges). |
 | 2026-11-16 | Exercices temporaires dans `sandbox/`, jamais committés, vérifiés en local ; le résultat de chaque chapitre sert le projet. |
 | 2026-11-16 | Durées indicatives (effort, pas calendrier) ; reprise via le journal (`JOURNAL.md`), rituels de début et de fin de session. |
+| 2026-11-16 | VSCode : httpYac plutôt que REST Client (non maintenu depuis 2022). Aucun chemin de machine dans `.vscode/settings.json` : le JDK du projet est détecté par l'extension Java (SDKMAN) ou fixé dans les réglages utilisateur. |
 | 2026-11-16 | Documents du cours : un dossier par chapitre, un fichier par étape, mise en forme aérée et régulière (règles dans `CLAUDE.md`). |
