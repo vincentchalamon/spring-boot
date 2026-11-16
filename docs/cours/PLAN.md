@@ -3,42 +3,65 @@
 Construire, étape par étape, l'API REST du gestionnaire de recettes décrit dans le [cahier des charges](../cahier-des-charges.md), pour apprendre **Java moderne** puis **Spring Boot**, avec tests, qualité et CI dès le départ.
 
 - **Public** : développeur Symfony / API Platform expert, débutant en Java.
-- **Rythme** : temps plein, interruptions possibles. Une étape correspond environ à une demi-journée et à une session Claude.
-- **Durée estimée** : 20 jours (4 semaines environ), plus le bonus.
-- **Détail des chapitres** : `chapitre-XX.md`, rédigé par Claude au démarrage de chaque chapitre.
+- **Rythme** : temps plein, avec des interruptions. Les durées sont des estimations d'effort, pas un calendrier : une étape peut s'étaler sur plusieurs sessions et plusieurs jours.
+- **Durée estimée** : environ 22,5 jours d'effort, plus le bonus.
+- **Où reprendre** : le [journal](JOURNAL.md), entrée la plus récente en haut.
+- **Détail** : un dossier par chapitre (`chapitre-XX/README.md`) et un fichier par étape (`etape-X.Y.md`), rédigés par Claude au démarrage.
 
 ## Comment travailler
 
 1. Ouvrir une session Claude dans le dépôt : `cd ~/Sites/spring-boot && claude`.
-2. Demander : "On attaque l'étape X.Y". Claude rédige ou relit le `chapitre-XX.md` correspondant.
-3. Créer la branche `chXX/YY-slug` depuis `origin/main`, développer, committer (Conventional Commits).
-4. Ouvrir la PR : la CI et la revue Claude (à partir du chapitre 2) tournent. Questions en session si besoin.
-5. Corriger, faire valider, merger. Claude coche l'étape et met à jour le journal.
+2. Demander "On reprend" ou "On attaque l'étape X.Y". Claude fait le point de reprise (journal), pose 2 ou 3 questions de rappel, puis fixe l'objectif de la session.
+3. Lire la théorie de l'étape en exécutant les exemples, puis faire la pratique.
+4. Exercices temporaires dans `sandbox/` : jamais committés, vérifiés par Claude en local.
+5. Code du projet sur la branche `chXX/YY-slug`, créée depuis `origin/main`. Committer souvent (Conventional Commits).
+6. Ouvrir la PR : la CI et la revue Claude (à partir du chapitre 2) tournent. Corriger, faire valider, merger.
+7. Fin de session : Claude pose les questions "expliquez", puis note dans le journal ce qui est fait, appris, flou, et la prochaine action.
 
-Chaque étape indique : **objectif**, **notions** (avec l'équivalent Symfony), **livrable**, **validation** (critère vérifiable).
+Modèle d'une étape :
 
-Accompagnement dégressif (détail dans `CLAUDE.md`) : guidé aux chapitres 0 et 1 (exemples complets à adapter), semi-guidé aux chapitres 2 à 4, autonome ensuite. Syntaxe de référence : [mémo Java pour un développeur PHP](memo-java-pour-php.md), complété au fil des chapitres.
+- **En bref** : objectif, apport au projet, durée, avancement ;
+- **Théorie** : ce qui change par rapport à PHP / Symfony, concepts, exemples complets exécutés, pièges, questions ;
+- **Pratique** : sous-étapes courtes sur le code du projet, avec modèle, résultat attendu et points d'arrêt ;
+- **Validation** : critères vérifiables et questions "expliquez".
+
+Une étape chargée enchaîne deux cycles théorie puis pratique.
+
+Accompagnement dégressif (détail dans `CLAUDE.md`) :
+
+- **Guidé** (chapitres 0 à 2) : un exemple complet à adapter pour chaque exercice ;
+- **Semi-guidé** (chapitres 3 à 6) : exemples pour la syntaxe et les API nouvelles seulement ;
+- **Autonome** (chapitres 7 à 10) : objectifs, notions, pièges, documentation.
+
+Chaque phase se termine par un **bilan** : une vraie fonctionnalité du projet, réalisée sans exemple, qui fixe le niveau d'accompagnement de la suite.
+
+Syntaxe de référence : [mémo Java pour un développeur PHP](memo-java-pour-php.md), complété au fil des chapitres.
 
 ## Avancement
 
-| Chapitre | Jours | Statut |
-|---|---|---|
-| 0. Environnement et dépôt | 1 | à faire |
-| 1. Java moderne, sans framework | 2 | à faire |
-| 2. Qualité et CI | 1,5 | à faire |
-| 3. Fondamentaux Spring Boot | 2 | à faire |
-| 4. Persistance | 2,5 | à faire |
-| 5. API REST : lecture | 2 | à faire |
-| 6. Contrat OpenAPI | 1 | à faire |
-| 7. API REST : écriture | 2,5 | à faire |
-| 8. Sécurité | 2 | à faire |
-| 9. Images | 1,5 | à faire |
-| 10. Observabilité et packaging | 2 | à faire |
-| Bonus. Serveur MCP | 1,5 | optionnel |
+| Chapitre | Phase | Jours | Statut |
+|---|---|---|---|
+| 0. Environnement et dépôt | guidée | 1 | en cours |
+| 1. Java moderne, sans framework | guidée | 2 | à faire |
+| 2. Qualité et CI | guidée | 1,5 | à faire |
+| Bilan 1. Étapes de recette | bilan | 0,5 | à faire |
+| 3. Fondamentaux Spring Boot | semi-guidée | 2 | à faire |
+| 4. Persistance | semi-guidée | 2,5 | à faire |
+| 5. API REST : lecture | semi-guidée | 2 | à faire |
+| 6. Contrat OpenAPI | semi-guidée | 1 | à faire |
+| Bilan 2. Autocomplétion | bilan | 1 | à faire |
+| 7. API REST : écriture | autonome | 2 | à faire |
+| 8. Sécurité | autonome | 2 | à faire |
+| 9. Images | autonome | 1,5 | à faire |
+| 10. Observabilité et packaging | autonome | 2 | à faire |
+| Bilan 3. "Dans mon frigo" | bilan | 1,5 | à faire |
+| Bonus. Serveur MCP | autonome | 1,5 | optionnel |
 
 ---
 
 ## Chapitre 0 - Environnement et dépôt
+
+Apport au projet : configuration VSCode partagée, `.gitignore`, modèle de PR, protection de `main`. Détail : [chapitre-00](chapitre-00/README.md).
 
 - [ ] **0.1 JDK et outils en ligne de commande**
   - Objectif : disposer d'un JDK et des CLI du projet.
@@ -56,38 +79,43 @@ Accompagnement dégressif (détail dans `CLAUDE.md`) : guidé aux chapitres 0 et
 - [ ] **0.3 Conventions du dépôt**
   - Objectif : poser le cadre GitHub Flow avant d'écrire du code.
   - Notions : protection de branche, modèle de PR, `.gitignore` Java/Maven/VSCode.
-  - Livrable : `.gitignore`, `.sdkmanrc` (créé en 0.1), `.github/pull_request_template.md`, protection de `main` (PR obligatoire ; le statut CI requis sera ajouté au chapitre 2).
+  - Livrable : `.gitignore` (dont `sandbox/`), `.sdkmanrc` (créé en 0.1), `.github/pull_request_template.md`, protection de `main` (PR obligatoire ; le statut CI requis sera ajouté au chapitre 2).
   - Validation : un push direct sur `main` est refusé ; première PR mergée.
 
 ## Chapitre 1 - Java moderne, sans framework
 
-Fil rouge : les types de valeur de la recette (type, régime, unité, quantité, ingrédient, étape), en Java pur et testés, puis réutilisés tels quels comme `@Embeddable` et enums JPA au chapitre 4. La mise à l'échelle des portions et la conversion métrique/US sont à la charge du front (hors-ligne) : l'API stocke et expose des quantités structurées en unités canoniques.
+Apport au projet : le projet Maven et les types de valeur de la recette (type, régime, unité, quantité, ingrédient), en Java pur et testés, réutilisés tels quels au chapitre 4 (`@Embeddable`, enums JPA). La mise à l'échelle des portions et la conversion métrique/US sont à la charge du front (hors-ligne) : l'API stocke et expose des quantités structurées en unités canoniques.
+
+Fil rouge `Quantity` : la même valeur est réécrite à chaque étape avec un meilleur outil (classe classique en 1.0, projet Maven et tests en 1.1, record avec `BigDecimal` et enum `Unit` en 1.2). Elle devient ensuite un composant de `Ingredient` (1.3), un `@Embeddable` (4.2), un champ des DTO JSON (5.1, 7.1) et un schéma du contrat OpenAPI (6.1).
+
+- [ ] **1.0 Syntaxe de base**
+  - Objectif : écrire de petits programmes Java avant d'aborder Maven.
+  - Notions : types primitifs et objets, `String`, opérateurs, conditions, boucles, tableaux, méthodes, classes (champs, constructeur, `this`, visibilité), `equals` / `hashCode` / `toString` écrits à la main, exceptions (`throw`, `try` / `catch`), conversion texte vers nombre ; lire une Javadoc.
+  - Livrable : `Quantity` en classe classique (valeur `double`, unité `String`, validation dans le constructeur) et un `main` de démonstration qui lit `250 g` en argument ; dans `sandbox/1.0/`, vérifié en session.
+  - Validation : programme fonctionnel, y compris sur une entrée invalide ; Vincent retrouve seul dans la Javadoc la méthode adaptée à un besoin donné.
 
 - [ ] **1.1 Projet Maven à la main**
   - Objectif : comprendre Maven avant que Spring ne le cache.
   - Notions : `pom.xml` (équivalent de `composer.json`), coordonnées `groupId:artifactId:version`, cycle de vie (`compile`, `test`, `package`, `verify`), arborescence `src/main/java` / `src/test/java`, packages (équivalent des namespaces PSR-4), Maven Wrapper (`mvnw`, équivalent d'un binaire Composer versionné), `maven-compiler-plugin` et `release`.
-  - Livrable : projet Maven minimal avec Wrapper, JUnit 6 et AssertJ, un test trivial.
-  - Validation : `./mvnw verify` passe ; le test est exécuté depuis VSCode (Test Runner).
+  - Notions complémentaires : packaging `jar` (`./mvnw package`).
+  - Livrable : projet Maven avec Wrapper, JUnit 6 et AssertJ ; la classe `Quantity` de l'étape 1.0 déplacée dans son package, avec ses premiers tests (dont un qui révèle le problème des `double`).
+  - Validation : `./mvnw verify` passe ; les tests sont exécutés depuis VSCode (Test Runner).
 
 - [ ] **1.2 Enums et records : type, régime, unité, quantité**
   - Objectif : modéliser des valeurs immuables et sûres.
   - Notions : classes, interfaces, visibilité, `final`, `static` ; `enum` avec attributs et méthodes ; `record` et constructeur compact (invariants) ; `equals` / `hashCode` / `toString` ; `==` vs `equals` ; `BigDecimal` vs `double` (précision, échelle, `compareTo` vs `equals`) ; exceptions non vérifiées (`IllegalArgumentException`) ; nullité (JSpecify `@NullMarked`, `@Nullable`, utilisés par Spring 7) ; tests paramétrés `@ParameterizedTest` / `@CsvSource` (équivalent des `dataProvider` PHPUnit), `assertThatThrownBy`.
-  - Livrable : enums `RecipeType` et `Diet` ; enum `Unit` (`GRAM`, `MILLILITER`, `TEASPOON`, `TABLESPOON` et unités non convertibles : pièce, pincée, etc.) ; record `Quantity` (valeur + unité, invariants validés).
+  - Livrable : enums `RecipeType` et `Diet` ; enum `Unit` (`GRAM`, `MILLILITER`, `TEASPOON`, `TABLESPOON` et unités non convertibles : pièce, pincée, etc.) ; `Quantity` réécrite en record (`BigDecimal` + `Unit`, invariants validés), en comparant avec la classe de l'étape 1.0.
   - Validation : tests unitaires des invariants (valeur nulle ou négative refusée, égalité de `1.0` et `1.00`).
 
-- [ ] **1.3 Ingrédients, étapes, collections et streams**
+- [ ] **1.3 Ingrédients, collections et streams**
   - Objectif : manipuler des listes de valeurs à la manière idiomatique de Java.
-  - Notions : `List`, `Map`, `Set`, `List.of` / `List.copyOf` (immutabilité, copie défensive), génériques, Streams API (`map`, `filter`, `toList`, `Collectors.groupingBy`), `Optional` (quand l'utiliser, quand l'éviter), `var`, text blocks, `java.time.Duration` ; quantité optionnelle ("sel, poivre").
-  - Livrable : records `Ingredient` (nom + précision optionnelle + quantité optionnelle) et `Step` (texte + durée optionnelle) ; une règle de validation écrite avec les streams (ex. ingrédient en double dans une liste).
+  - Notions : `List`, `Map`, `Set`, `List.of` / `List.copyOf` (immutabilité, copie défensive), génériques, Streams API (`map`, `filter`, `toList`, `Collectors.groupingBy`), `Optional` (quand l'utiliser, quand l'éviter), `var`, text blocks ; quantité optionnelle ("sel, poivre").
+  - Livrable : record `Ingredient` (nom + précision optionnelle + quantité optionnelle) ; une règle de validation écrite avec les streams (ingrédient en double dans une liste).
   - Validation : tests ; Vincent explique en revue la différence entre `List.of`, `Arrays.asList` et `new ArrayList<>()`.
 
-- [ ] **1.4 Bilan Java**
-  - Objectif : consolider avant d'introduire Spring.
-  - Notions : revue du code du chapitre ; packaging `jar` ; Javadoc là où elle apporte quelque chose ; pièges d'un développeur PHP (objets longue durée, partage d'état, thread-safety, `null`).
-  - Livrable : PR de refactoring éventuelle suite à la revue.
-  - Validation : `./mvnw verify` vert, quiz oral rapide en session.
-
 ## Chapitre 2 - Qualité et CI
+
+Apport au projet : formatage, analyse statique, couverture, tests de mutation, CI et revue automatique sur chaque PR.
 
 - [ ] **2.1 Formatage et analyse statique**
   - Objectif : faire porter le style et les erreurs courantes par l'outillage.
@@ -113,7 +141,17 @@ Fil rouge : les types de valeur de la recette (type, régime, unité, quantité,
   - Livrable : `.github/workflows/claude-review.yml`.
   - Validation : une PR de test reçoit une revue conforme (pas de code corrigé) ; une mention `@claude` déclenche une nouvelle revue.
 
+## Bilan 1 - Étapes de recette (fin de la phase guidée)
+
+- [ ] **Bilan 1 Record `Step`**
+  - Objectif : vérifier, sans exemple fourni, les acquis des chapitres 1 et 2 ; fixer le niveau d'accompagnement du chapitre 3.
+  - Notions mobilisées : record et invariants, `Optional`, collections, streams, tests paramétrés, chaîne qualité complète. Petite nouveauté à découvrir seul dans la Javadoc : `java.time.Duration`.
+  - Livrable : record `Step` (texte + durée optionnelle) et ses règles de validation, avec tests.
+  - Validation : CI verte (formatage, Error Prone, seuil de couverture, score de mutation) ; revue au format PR ; grille de compétences (acquis, à consolider, non acquis) notée dans le journal.
+
 ## Chapitre 3 - Fondamentaux Spring Boot
+
+Apport au projet : l'application Spring Boot, sa configuration typée, PostgreSQL en local via Compose.
 
 - [ ] **3.1 Initialiser l'application**
   - Objectif : passer du projet Maven pur à une application Spring Boot.
@@ -141,6 +179,8 @@ Fil rouge : les types de valeur de la recette (type, régime, unité, quantité,
 
 ## Chapitre 4 - Persistance
 
+Apport au projet : le schéma versionné, l'entité `Recipe`, le repository et le service de lecture, testés contre un vrai PostgreSQL.
+
 - [ ] **4.1 Migrations Flyway**
   - Objectif : schéma versionné, jamais généré par Hibernate.
   - Notions : Flyway (équivalent de Doctrine Migrations), nommage `V1__...sql`, `spring.jpa.hibernate.ddl-auto=validate`.
@@ -166,6 +206,8 @@ Fil rouge : les types de valeur de la recette (type, régime, unité, quantité,
   - Validation : tests verts en local et en CI (Docker disponible sur les runners).
 
 ## Chapitre 5 - API REST : lecture
+
+Apport au projet : `GET /recipes/{id}` et `GET /recipes` (pagination, filtres, recherche).
 
 - [ ] **5.1 Premier endpoint**
   - Objectif : `GET /recipes/{id}`.
@@ -193,6 +235,8 @@ Fil rouge : les types de valeur de la recette (type, régime, unité, quantité,
 
 ## Chapitre 6 - Contrat OpenAPI
 
+Apport au projet : la documentation de l'API et son contrat versionné, contrôlé en CI.
+
 - [ ] **6.1 Documentation springdoc**
   - Objectif : une spécification OpenAPI fidèle et utile.
   - Notions : springdoc-openapi 3 (`/v3/api-docs`, Swagger UI), ce qui est inféré automatiquement et ce qu'il faut annoter (`@Operation`, `@Schema`, `@Tag`, `@ApiResponse`), documenter les `ProblemDetail` et la pagination ; comparaison avec la génération par API Platform.
@@ -205,7 +249,17 @@ Fil rouge : les types de valeur de la recette (type, régime, unité, quantité,
   - Livrable : `openapi.yaml` versionné + contrôle en CI.
   - Validation : une modification d'un DTO sans mise à jour du contrat fait échouer la CI.
 
+## Bilan 2 - Autocomplétion (fin de la phase semi-guidée)
+
+- [ ] **Bilan 2 Endpoints d'autocomplétion**
+  - Objectif : vérifier, sans exemple fourni, les acquis des chapitres 3 à 6 ; fixer le niveau d'accompagnement de la phase autonome.
+  - Notions mobilisées : requête de repository et projection, service, contrôleur, DTO, `ProblemDetail`, tests de slice et d'intégration, contrat OpenAPI. Petite nouveauté à découvrir seul dans la documentation : l'en-tête `Cache-Control`.
+  - Livrable : endpoints de référentiel pour le formulaire (types, régimes, contenants déjà utilisés).
+  - Validation : CI verte (dont le contrôle du contrat) ; revue au format PR ; grille de compétences notée dans le journal.
+
 ## Chapitre 7 - API REST : écriture
+
+Apport au projet : création, modification et suppression des recettes, avec validation.
 
 - [ ] **7.1 Création**
   - Objectif : `POST /recipes`.
@@ -219,10 +273,10 @@ Fil rouge : les types de valeur de la recette (type, régime, unité, quantité,
   - Livrable : modification et suppression.
   - Validation : test de modification concurrente.
 
-- [ ] **7.3 Autocomplétion et validation personnalisée**
-  - Objectif : alimenter les champs du formulaire.
-  - Notions : endpoints de référentiel (types, régimes, contenants déjà utilisés), contrainte de validation personnalisée (annotation + `ConstraintValidator`, équivalent d'une Constraint Symfony), cache HTTP simple (`Cache-Control`).
-  - Livrable : endpoints d'autocomplétion.
+- [ ] **7.3 Validation personnalisée**
+  - Objectif : exprimer une règle métier comme contrainte de validation réutilisable.
+  - Notions : contrainte personnalisée (annotation + `ConstraintValidator`, équivalent d'une Constraint Symfony), réutilisation de la règle "ingrédient en double" de l'étape 1.3.
+  - Livrable : contrainte appliquée au DTO de création et de modification.
   - Validation : tests ; contrat OpenAPI mis à jour.
 
 - [ ] **7.4 Tests bout en bout du cycle de vie**
@@ -232,6 +286,8 @@ Fil rouge : les types de valeur de la recette (type, régime, unité, quantité,
   - Validation : CI verte ; score de mutation maintenu.
 
 ## Chapitre 8 - Sécurité
+
+Apport au projet : lecture publique, écriture réservée aux administrateurs authentifiés par JWT.
 
 - [ ] **8.1 Spring Security : les bases**
   - Objectif : lecture publique, écriture protégée.
@@ -259,6 +315,8 @@ Fil rouge : les types de valeur de la recette (type, régime, unité, quantité,
 
 ## Chapitre 9 - Images
 
+Apport au projet : une image par recette, envoyée, servie et supprimée avec la recette.
+
 - [ ] **9.1 Upload**
   - Objectif : `PUT /recipes/{id}/image`.
   - Notions : `MultipartFile`, limites `spring.servlet.multipart.*`, validation du type réel (pas seulement l'extension) et de la taille, nom de fichier généré (traversée de répertoire), stockage sur le système de fichiers local dans un répertoire configuré (service simple, sans abstraction) ; parallèle avec VichUploader.
@@ -273,6 +331,8 @@ Fil rouge : les types de valeur de la recette (type, régime, unité, quantité,
 
 ## Chapitre 10 - Observabilité et packaging
 
+Apport au projet : logs structurés, métriques, image OCI et CI complète.
+
 - [ ] **10.1 Logs et métriques**
   - Objectif : une API diagnostiquable.
   - Notions : SLF4J / Logback, logs structurés natifs de Spring Boot (JSON, ECS / logfmt), niveaux par package, Actuator (`metrics`, groupes de health, exposition par profil), Micrometer.
@@ -285,21 +345,29 @@ Fil rouge : les types de valeur de la recette (type, régime, unité, quantité,
   - Livrable : image construite et démarrée via Compose.
   - Validation : l'API répond dans le conteneur.
 
-- [ ] **10.3 CI finale et bilan**
-  - Objectif : clore le cours proprement.
+- [ ] **10.3 CI finale**
+  - Objectif : une CI complète avant le bilan final.
   - Notions : construction de l'image en CI (sans push), scan de vulnérabilités (Trivy), pyramide de tests, revue globale du code.
   - Livrable : CI complète ; liste des améliorations possibles.
   - Validation : CI verte de bout en bout.
 
+## Bilan 3 - "Dans mon frigo" (bilan final)
+
+- [ ] **Bilan 3 Filtre par ingrédients disponibles**
+  - Objectif : vérifier ce qui est resté de tout le cours, sur une fonctionnalité complète, sans accompagnement.
+  - Notions mobilisées : migration et index, `Specification`, paramètres de requête et validation, performance (N+1), contrat OpenAPI, tests à tous les niveaux, observabilité. Petite nouveauté choisie selon ce qui sera alors flou.
+  - Livrable : filtre des recettes réalisables avec une liste d'ingrédients disponibles ; règles précises (correspondance des noms, ingrédients sans quantité comme "sel, poivre") définies au démarrage du bilan.
+  - Validation : CI verte ; revue globale du code ; liste des améliorations possibles ; grille de compétences finale.
+
 ## Bonus - Serveur MCP (optionnel)
 
-- [ ] **B.1 Exposer l'API comme serveur MCP**
+- [ ] **Bonus 1 Exposer l'API comme serveur MCP**
   - Objectif : permettre à un agent IA de consulter et proposer des recettes.
   - Notions : Spring AI (starter MCP server), outils (`@Tool` / `@McpTool`) qui s'appuient sur les services existants, transport HTTP.
   - Livrable : outils de recherche et de consultation.
   - Validation : Claude Code connecté au serveur MCP local répond à "trouve-moi un dessert vegan".
 
-- [ ] **B.2 Écriture et sécurité**
+- [ ] **Bonus 2 Écriture et sécurité**
   - Objectif : ajouter une recette via l'agent, de manière sécurisée.
   - Notions : outil d'écriture, réutilisation de la validation, authentification du client MCP (JWT existant ; évolution possible vers OAuth, prévue par la spécification MCP).
   - Livrable : outil d'ajout de recette protégé.
@@ -320,10 +388,10 @@ Fil rouge : les types de valeur de la recette (type, régime, unité, quantité,
 | 2026-11-16 | IDE : VSCode. |
 | 2026-11-16 | Mise à l'échelle des portions et conversion métrique/US (quantités et température du four en °C/°F) à la charge du front (exigence hors-ligne). Ingrédient : nom + précision optionnelle + quantité optionnelle. L'API stocke les quantités en g, ml, c. à café, c. à soupe ou en unités non convertibles (pièce, pincée...), liste fermée fixée à l'étape 1.2 ; pas d'endpoint de référentiel des unités, la liste des codes est documentée par le contrat OpenAPI. |
 | 2026-11-16 | Version du JDK fixée par projet via `.sdkmanrc` (créé en 0.1, committé en 0.3). |
-| 2026-11-16 | Accompagnement dégressif (guidé ch. 0-1 avec exemples complets à adapter, semi-guidé ch. 2-4, autonome ensuite) et mémos de syntaxe `memo-*.md`. |
-
-## Journal
-
-| Date | Étape | Notes |
-|---|---|---|
-| 2026-11-16 | - | Création du dépôt, du plan et de `CLAUDE.md`. |
+| 2026-11-16 | Accompagnement dégressif et mémos de syntaxe `memo-*.md`. |
+| 2026-11-16 | Étape modèle : théorie (exemples complets exécutés, sur un autre sujet) puis pratique (code du projet). Phases : guidée ch. 0-2, semi-guidée ch. 3-6, autonome ch. 7-10. |
+| 2026-11-16 | Ajout de l'étape 1.0 (syntaxe de base) ; fil rouge `Quantity` réécrite de 1.0 à 1.2 ; suppression de l'étape 1.4, remplacée par le bilan 1. |
+| 2026-11-16 | Trois bilans en fin de phase, chacun une vraie fonctionnalité : bilan 1 (record `Step`), bilan 2 (autocomplétion, retirée de l'étape 7.3), bilan 3 ("Dans mon frigo", jusque-là idée future du cahier des charges). |
+| 2026-11-16 | Exercices temporaires dans `sandbox/`, jamais committés, vérifiés en local ; le résultat de chaque chapitre sert le projet. |
+| 2026-11-16 | Durées indicatives (effort, pas calendrier) ; reprise via le journal (`JOURNAL.md`), rituels de début et de fin de session. |
+| 2026-11-16 | Documents du cours : un dossier par chapitre, un fichier par étape, mise en forme aérée et régulière (règles dans `CLAUDE.md`). |

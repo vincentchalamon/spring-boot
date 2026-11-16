@@ -17,7 +17,7 @@ Référence officielle : [Learn Java (dev.java)](https://dev.java/learn/) et [Th
 | `use App\Weather\City;` | `import com.example.weather.City;` |
 | plusieurs classes par fichier possibles | une classe `public` par fichier, nommée comme le fichier |
 | code au niveau racine du script | méthode `main` (voir ci-dessous) |
-| `php script.php` | `java Script.java` (direct) ou `javac` puis `java` (voir chapitre 0, étape 6) |
+| `php script.php` | `java Script.java` (direct) ou `javac` puis `java` (voir [étape 0.1](chapitre-00/etape-0.1.md), cycle B) |
 
 ```java
 package com.example.weather;

@@ -42,6 +42,10 @@ Liste définitive fixée à l'étape 1.2 du cours ; elle peut s'enrichir (ajout 
 - Toutes les informations de la recette, quantités structurées en unités canoniques.
 - L'adaptation au **nombre de portions** et la conversion **métrique / US** (cups, oz, °F pour la température du four) sont faites par le **front**, car elles doivent fonctionner hors-ligne.
 
+### "Dans mon frigo" - API
+- Filtrer les recettes réalisables avec une liste d'ingrédients disponibles.
+- Planifié comme bilan final du cours (bilan 3) ; règles précises (correspondance des noms, ingrédients sans quantité comme "sel, poivre") définies au démarrage du bilan.
+
 ### Administration - API
 - Réservée aux administrateurs authentifiés.
 - Ajout, modification, suppression d'une recette (formulaire unique côté front).
@@ -57,4 +61,3 @@ Liste définitive fixée à l'étape 1.2 du cours ; elle peut s'enrichir (ajout 
 ## Idées futures
 
 - **MCP** : un agent IA accède à l'application pour proposer des améliorations de recettes ou en ajouter. Chapitre bonus du cours.
-- **"Dans mon frigo"** : filtrer les recettes selon les ingrédients disponibles. Non planifié.
