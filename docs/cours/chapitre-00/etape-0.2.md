@@ -240,13 +240,13 @@ code --uninstall-extension ms-azuretools.vscode-docker
 
 Durée : 10 min. Modèle : exemple 1.
 
-Créez `.vscode/extensions.json` à la racine du dépôt. Listez les dix extensions du projet (section "Les extensions du projet" plus haut).
+Créez `.vscode/extensions.json` à la racine du dépôt. Listez les neuf extensions du projet (section "Les extensions du projet" plus haut).
 
 **Résultat attendu** :
 
 1. Fermez VSCode, puis relancez-le avec `code .` depuis la racine du dépôt.
 2. Ouvrez la vue Extensions (`Ctrl+Shift+X`) et tapez `@recommended`.
-3. La section "Workspace Recommendations" liste les dix extensions, toutes installées.
+3. La section "Workspace Recommendations" liste les neuf extensions, toutes installées.
 
 #### A4. Écrire `.vscode/settings.json`
 
@@ -471,7 +471,7 @@ En session, Claude :
 
 Points vérifiables :
 
-- [ ] Après `code .`, le filtre `@recommended` liste les dix extensions du projet.
+- [ ] Après `code .`, le filtre `@recommended` liste les neuf extensions du projet.
 - [ ] `.vscode/settings.json` ne contient aucun chemin de la machine.
 - [ ] Un fichier enregistré se termine par une ligne vide et n'a pas d'espace en fin de ligne.
 - [ ] Un point d'arrêt est atteint dans `HelloWorld.java`.
