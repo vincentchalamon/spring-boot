@@ -69,7 +69,7 @@ Apport au projet : configuration VSCode partagée, `.gitignore`, modèle de PR, 
   - Livrable : JDK 25 Temurin installé via SDKMAN ; `docker`, `gh`, `httpie` disponibles.
   - Validation : `java -version` et `javac -version` affichent 25 ; un premier `HelloWorld.java` exécuté avec `java HelloWorld.java` (lancement direct d'un fichier source) ; un essai dans `jshell`.
 
-- [ ] **0.2 VSCode pour Java**
+- [x] **0.2 VSCode pour Java**
   - Objectif : un IDE productif et une configuration partagée via le dépôt.
   - Notions : Language Server Java (Eclipse JDT LS), extensions, réglages de workspace.
   - Extensions : Extension Pack for Java (Red Hat, Microsoft), Spring Boot Extension Pack, Container Tools, httpYac (fichiers `.http` versionnés), SonarQube for IDE, EditorConfig, GitLens, XML (Red Hat, pour `pom.xml`), YAML.

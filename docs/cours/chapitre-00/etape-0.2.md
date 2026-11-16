@@ -11,17 +11,17 @@
 
 Avancement :
 
-- [ ] A1. Créer la branche
-- [ ] A2. Installer les extensions manquantes
-- [ ] A3. Écrire `.vscode/extensions.json`
-- [ ] A4. Écrire `.vscode/settings.json`
-- [ ] A5. Écrire `.editorconfig`
-- [ ] A6. Committer
-- [ ] B1. Régler le confort de lecture (réglages personnels)
-- [ ] B2. Voir une erreur sans compiler
-- [ ] B3. Déboguer `HelloWorld.java`
-- [ ] B4. Évaluer une expression pendant une pause
-- [ ] Validation en session
+- [x] A1. Créer la branche
+- [x] A2. Installer les extensions manquantes
+- [x] A3. Écrire `.vscode/extensions.json`
+- [x] A4. Écrire `.vscode/settings.json`
+- [x] A5. Écrire `.editorconfig`
+- [x] A6. Committer
+- [x] B1. Régler le confort de lecture (réglages personnels)
+- [x] B2. Voir une erreur sans compiler
+- [x] B3. Déboguer `HelloWorld.java`
+- [x] B4. Évaluer une expression pendant une pause
+- [x] Validation en session
 
 Astuce : `Ctrl+Shift+O` affiche le plan du document.
 
@@ -189,6 +189,9 @@ Les sections du bas l'emportent sur celles du haut.
 - **Chemin de machine dans le dépôt** : un `/home/vincent/...` dans `.vscode/settings.json` casse la configuration des autres contributeurs et de la CI. Il va dans les réglages utilisateur.
 - **Formatage Java provisoire** : `editor.formatOnSave` utilise pour l'instant le formateur d'Eclipse. À l'étape 2.1, Spotless devient la référence ; on alignera alors VSCode dessus.
 - **Extension Docker en double** : `ms-azuretools.vscode-docker` est l'ancienne extension, remplacée par Container Tools. Elle peut être désinstallée.
+- **Réglage dans le mauvais bloc `[java]`** : un bloc de langage n'accepte que les réglages propres à l'éditeur (formatage, actions à l'enregistrement). Un réglage de portée projet, comme `java.configuration.updateBuildConfiguration`, y est ignoré sans erreur, juste grisé.
+- **Ligne finale effacée** : le formateur JSON de VSCode ne lit pas `.editorconfig`, mais le réglage `files.insertFinalNewline`. Sans lui dans `.vscode/settings.json`, `editor.formatOnSave` supprime la ligne vide qu'EditorConfig vient d'ajouter.
+- **Réglages imbriqués** : on écrit `"editor.formatOnSave": true`, pas `"editor": { "formatOnSave": true }`.
 - **Recommandation n'est pas installation** : un collègue peut refuser. Ce qui doit être garanti pour tous (formatage, analyse) sera vérifié par Maven et la CI au chapitre 2.
 
 ### Vérifiez votre compréhension
@@ -471,11 +474,11 @@ En session, Claude :
 
 Points vérifiables :
 
-- [ ] Après `code .`, le filtre `@recommended` liste les neuf extensions du projet.
-- [ ] `.vscode/settings.json` ne contient aucun chemin de la machine.
-- [ ] Un fichier enregistré se termine par une ligne vide et n'a pas d'espace en fin de ligne.
-- [ ] Un point d'arrêt est atteint dans `HelloWorld.java`.
-- [ ] Le commit est sur la branche `ch00/02-vscode`, avec un message Conventional Commits.
+- [x] Après `code .`, le filtre `@recommended` liste les neuf extensions du projet.
+- [x] `.vscode/settings.json` ne contient aucun chemin de la machine.
+- [x] Un fichier enregistré se termine par une ligne vide et n'a pas d'espace en fin de ligne.
+- [x] Un point d'arrêt est atteint dans `HelloWorld.java`.
+- [x] Le commit est sur la branche `ch00/02-vscode`, avec un message Conventional Commits.
 
 Questions "expliquez" :
 
