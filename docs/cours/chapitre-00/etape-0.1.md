@@ -15,14 +15,14 @@ Avancement :
 - [x] A2. Nettoyer `~/.zshrc`
 - [x] A3. Installer Temurin 25
 - [x] A4. Fixer la version du projet (`.sdkmanrc`)
-- [ ] A5. Installer httpie
-- [ ] B1. Préparer le bac à sable
-- [ ] B2. Écrire `HelloWorld.java`
-- [ ] B3. Compiler en deux temps
-- [ ] B4. Écrire `Hello.java` (forme compacte)
-- [ ] B5. Lire une erreur de compilation
-- [ ] B6. Prédire dans jshell
-- [ ] Validation en session
+- [x] A5. Installer httpie
+- [x] B1. Préparer le bac à sable
+- [x] B2. Écrire `HelloWorld.java`
+- [x] B3. Compiler en deux temps
+- [x] B4. Écrire `Hello.java` (forme compacte)
+- [x] B5. Lire une erreur de compilation
+- [x] B6. Prédire dans jshell
+- [x] Validation en session
 
 Astuce : dans VSCode, `Ctrl+Shift+O` affiche le plan du document pour naviguer entre les sections.
 
@@ -528,12 +528,12 @@ En session, Claude :
 
 Points vérifiables, dans un **nouveau** terminal :
 
-- [ ] `java -version` et `javac -version` affichent 25.
-- [ ] `which java` pointe sous `~/.sdkman/`.
-- [ ] `echo $JAVA_HOME` pointe sous `~/.sdkman/candidates/java/`.
-- [ ] `http --version` répond.
-- [ ] `docker run --rm hello-world` fonctionne sans `sudo`.
-- [ ] `HelloWorld.java` et `Hello.java` donnent les résultats attendus.
+- [x] `java -version` et `javac -version` affichent 25.
+- [x] `which java` pointe sous `~/.sdkman/`.
+- [x] `echo $JAVA_HOME` pointe sous `~/.sdkman/candidates/java/`.
+- [x] `http --version` répond.
+- [x] `docker run --rm hello-world` fonctionne sans `sudo`.
+- [x] `HelloWorld.java` et `Hello.java` donnent les résultats attendus.
 
 Questions "expliquez" :
 

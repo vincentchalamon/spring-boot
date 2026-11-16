@@ -63,7 +63,7 @@ Syntaxe de référence : [mémo Java pour un développeur PHP](memo-java-pour-ph
 
 Apport au projet : configuration VSCode partagée, `.gitignore`, modèle de PR, protection de `main`. Détail : [chapitre-00](chapitre-00/README.md).
 
-- [ ] **0.1 JDK et outils en ligne de commande**
+- [x] **0.1 JDK et outils en ligne de commande**
   - Objectif : disposer d'un JDK et des CLI du projet.
   - Notions : JDK vs JRE, distributions (Temurin), SDKMAN (équivalent de phpenv / asdf), `JAVA_HOME`, `java`, `javac`, `jshell` (REPL, équivalent `php -a`).
   - Livrable : JDK 25 Temurin installé via SDKMAN ; `docker`, `gh`, `httpie` disponibles.
