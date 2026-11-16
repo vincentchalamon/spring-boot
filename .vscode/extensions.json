@@ -1,0 +1,13 @@
+{
+  "recommendations": [
+    "vscjava.vscode-java-pack",
+    "vmware.vscode-boot-dev-pack",
+    "ms-azuretools.vscode-containers",
+    "anweber.vscode-httpyac",
+    "sonarsource.sonarlint-vscode",
+    "editorconfig.editorconfig",
+    "eamodio.gitlens",
+    "redhat.vscode-xml",
+    "redhat.vscode-yaml"
+  ]
+}
