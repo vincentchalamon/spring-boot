@@ -102,11 +102,11 @@ Fichier `.vscode/extensions.json` :
 
 ```json
 {
-    "recommendations": [
-        "bmewburn.vscode-intelephense-client",
-        "xdebug.php-debug",
-        "editorconfig.editorconfig"
-    ]
+  "recommendations": [
+    "bmewburn.vscode-intelephense-client",
+    "xdebug.php-debug",
+    "editorconfig.editorconfig"
+  ]
 }
 ```
 
@@ -130,11 +130,11 @@ Fichier `.vscode/settings.json` :
 
 ```json
 {
-    "editor.formatOnSave": true,
-    "[php]": {
-        "editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
-    },
-    "intelephense.environment.phpVersion": "8.3.0"
+  "editor.formatOnSave": true,
+  "[php]": {
+    "editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
+  },
+  "intelephense.environment.phpVersion": "8.3.0"
 }
 ```
 
@@ -307,14 +307,14 @@ Exemple 4, à essayer et ajuster :
 
 ```json
 {
-    "editor.fontFamily": "'Atkinson Hyperlegible Mono', 'Fira Mono', monospace",
-    "editor.fontSize": 16,
-    "editor.lineHeight": 1.8,
-    "editor.letterSpacing": 0.5,
-    "editor.minimap.enabled": false,
-    "editor.cursorBlinking": "solid",
-    "gitlens.currentLine.enabled": false,
-    "gitlens.codeLens.enabled": false
+  "editor.fontFamily": "'Atkinson Hyperlegible Mono', 'Fira Mono', monospace",
+  "editor.fontSize": 16,
+  "editor.lineHeight": 1.8,
+  "editor.letterSpacing": 0.5,
+  "editor.minimap.enabled": false,
+  "editor.cursorBlinking": "solid",
+  "gitlens.currentLine.enabled": false,
+  "gitlens.codeLens.enabled": false
 }
 ```
 
