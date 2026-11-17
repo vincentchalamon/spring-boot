@@ -300,7 +300,7 @@ public enum Currency {
 | `Suit::cases()` | `Suit.values()` |
 | `Suit::from('H')` | méthode statique écrite à la main (`fromCode`) |
 | `Suit::Hearts->name` | `Suit.HEARTS.name()` |
-| `match` incomplet : erreur à l'exécution | `switch` incomplet : erreur de compilation |
+| `match` incomplet : erreur à l'exécution | expression `switch` incomplète : erreur de compilation (pas une instruction `switch`) |
 
 `valueOf("EURO")` cherche par **nom** de constante. Comparer deux constantes : `==`.
 
@@ -334,7 +334,7 @@ PHP le plus proche : `final readonly class Point { public function __construct(p
 | `equals` | valeur **et** échelle : `1.0` différent de `1.00` |
 | retirer les zéros | `a.stripTrailingZeros()` (`100` devient `1E+2`) |
 | afficher | `a.toPlainString()` |
-| fixer l'échelle | `a.setScale(2)` |
+| fixer l'échelle | `a.setScale(2)` (`ArithmeticException` s'il faut arrondir) |
 
 ## Nullité
 

@@ -76,7 +76,7 @@ static Stream<Arguments> invalidTexts() {
 }
 ```
 
-Imports : `org.junit.jupiter.params.ParameterizedTest`, `org.junit.jupiter.params.provider.*Source`.
+Imports : `org.junit.jupiter.params.ParameterizedTest`, `org.junit.jupiter.params.provider.*Source`, `org.junit.jupiter.params.provider.Arguments`, `java.util.stream.Stream`.
 
 ## Assertions utiles
 

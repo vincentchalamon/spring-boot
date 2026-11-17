@@ -79,7 +79,7 @@ $6 ==> true
 - `ordinal()` donne la position (à partir de 0). Ne vous en servez jamais comme donnée : elle change si l'on insère une constante ;
 - `==` compare deux constantes sans risque.
 
-Un `switch` sur un enum est vérifié par le compilateur :
+Une **expression** `switch` (qui renvoie une valeur) sur un enum est vérifiée par le compilateur :
 
 ```console
 jshell> String label(Size s) { return switch (s) { case SMALL -> "S"; case MEDIUM -> "M"; case LARGE -> "L"; }; }
@@ -96,6 +96,8 @@ jshell> String bad(Size s) { return switch (s) { case SMALL -> "S"; case MEDIUM 
 ```
 
 Oublier une constante est une erreur de **compilation**. En PHP, un `match` incomplet n'échoue qu'à l'exécution, avec `UnhandledMatchError`.
+
+Seule l'expression est vérifiée. Une **instruction** `switch` (qui ne renvoie rien) sur un enum peut omettre des constantes sans erreur.
 
 #### Exemple 2 : un enum avec un champ
 
@@ -565,7 +567,7 @@ Lecture ligne par ligne :
 
 6. `amount = amount.setScale(2);`
 
-   **Normalise** : tous les prix sont stockés avec exactement deux décimales. `1.5` et `1.50` deviennent identiques, donc égaux selon le `equals` généré. Le contrôle précédent garantit qu'aucun arrondi n'est nécessaire.
+   **Normalise** : tous les prix sont stockés avec exactement deux décimales. `1.5` et `1.50` deviennent identiques, donc égaux selon le `equals` généré. Le contrôle précédent garantit qu'aucun arrondi n'est nécessaire : sans lui, `setScale(2)` lancerait `ArithmeticException` sur `1.005`.
 
 7. `new BigDecimal(parts[0])`
 
@@ -693,8 +695,10 @@ Ce qui change par rapport au modèle :
 
 Durée : 40 min. Modèle : exemples 3 et 5.
 
-1. Adaptez `QuantityTest` : constructeur avec `new BigDecimal("...")` et `Unit`, accesseurs `value()` et `unit()`.
-2. Supprimez les tests devenus sans objet (unité vide : une `Unit` ne peut pas l'être), ajoutez ceux des nouvelles règles :
+1. Mettez `doubleArithmeticIsNotExact` en commentaire (`Ctrl+/`) : il est traité en B4.
+2. Adaptez le reste de `QuantityTest` : constructeur avec `new BigDecimal("...")` et `Unit`, accesseurs `value()` et `unit()`.
+3. Revoyez les données de `rejectsIncorrectValue` : `kg` et `l` n'existent pas dans `Unit` (utilisez `g`, `ml`), et `NaN` / `Infinity` sont maintenant des nombres invalides (déplacez-les dans `rejectsInvalidQuantityNumber`).
+4. Supprimez les tests devenus sans objet (unité vide : une `Unit` ne peut pas l'être), ajoutez ceux des nouvelles règles :
    - `null` refusé pour la valeur et pour l'unité, avec `NullPointerException` ;
    - `1.0` g égale `1.00` g, avec le même `hashCode` ;
    - symbole inconnu dans `parse` (`"250 kg"`) refusé ;
@@ -719,17 +723,21 @@ Puis `BUILD SUCCESS`.
 
 #### B4. Inverser le test des `double`
 
-Durée : 10 min.
+Durée : 10 min. Modèle : `decimalArithmeticIsExact` (exemple 5).
 
 À l'étape 1.1, `doubleArithmeticIsNotExact` documentait la limite : `0.1 + 0.2` n'égale pas `0.3`.
 
-1. Lancez les tests : que devient ce test avec `BigDecimal` ?
-2. Inversez l'assertion qui compare à `0.3`, et renommez le test pour décrire le nouveau comportement.
+1. Retirez le commentaire posé en B3.
+2. Construisez la somme avec `add`, sur deux `BigDecimal`.
 3. La seconde assertion (`0.30000000000000004`) n'a plus de sens : supprimez-la.
+4. Lancez le test : que devient l'assertion `isNotEqualTo` avec `BigDecimal` ?
+5. Inversez-la, et renommez le test pour décrire le nouveau comportement.
 
-Construisez la somme avec `add`, comme dans `decimalArithmeticIsExact` (exemple 5).
+```bash
+./mvnw -ntp -q test -Dtest='QuantityTest'
+```
 
-**Résultat attendu** : `BUILD SUCCESS`, et un test qui affirme que `0.1 + 0.2` g égale `0.3` g.
+**Résultat attendu** : à l'étape 4, un échec sur `isNotEqualTo`. À l'étape 5, `BUILD SUCCESS`, et un test qui affirme que `0.1 + 0.2` g égale `0.3` g.
 
 #### B5. Comparer avec la classe de l'étape 1.1
 
@@ -739,6 +747,8 @@ Durée : 10 min.
 diff sandbox/1.2/QuantityClass.java src/main/java/io/github/vincentchalamon/quinoa/recipe/Quantity.java
 wc -l sandbox/1.2/QuantityClass.java src/main/java/io/github/vincentchalamon/quinoa/recipe/Quantity.java
 ```
+
+**Résultat attendu** : `wc -l` montre un record nettement plus court que la classe.
 
 Notez, pour la session :
 
@@ -802,7 +812,7 @@ Questions "expliquez" :
 - `BigDecimal` : https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/math/BigDecimal.html
 - `Objects.requireNonNull` : https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/Objects.html#requireNonNull(T,java.lang.String)
 - JSpecify, guide utilisateur : https://jspecify.dev/docs/user-guide/
-- Tests paramétrés et `@EnumSource` : https://docs.junit.org/current/user-guide/#writing-tests-parameterized-tests-sources-EnumSource
+- Tests paramétrés et `@EnumSource` : https://docs.junit.org/current/writing-tests/parameterized-classes-and-tests.html#sources-EnumSource
 
 ## Pour aller plus loin (facultatif)
 
