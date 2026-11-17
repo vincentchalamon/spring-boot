@@ -23,10 +23,14 @@ Comparer les versions successives fait partie de l'apprentissage : gardez votre 
 ## Étapes
 
 1. [Étape 1.0 - Syntaxe de base](etape-1.0.md)
-2. Étape 1.1 - Projet Maven à la main (rédigée au démarrage de l'étape)
+2. [Étape 1.1 - Projet Maven à la main](etape-1.1.md)
 3. Étape 1.2 - Enums et records (rédigée au démarrage de l'étape)
 4. Étape 1.3 - Ingrédients, collections et streams (rédigée au démarrage de l'étape)
 
 ## Mémo
 
-La syntaxe vue dans ce chapitre est consignée dans le [mémo Java pour PHP](../memo-java-pour-php.md).
+La syntaxe vue dans ce chapitre est consignée dans les mémos :
+
+- [Java pour PHP](../memo-java-pour-php.md) ;
+- [Maven](../memo-maven.md) ;
+- [tests](../memo-tests.md).
