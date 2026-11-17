@@ -12,5 +12,5 @@
 
 ## Vérifications
 
-- [ ] `composer ci` passe en local
 - [ ] Le titre de la PR suit Conventional Commits
+- [ ] Périmètre de l'étape respecté
