@@ -22,7 +22,6 @@ Claude complète ce journal en fin de session. L'entrée la plus récente est en
 - **Flou** : le squash "réécrit" les commits (non : il en crée un nouveau sur `main`, la branche reste intacte) ; reflog vu en passant seulement.
 - **Cours** : relecture du chapitre 0 (PR #1 : B1 en une commande `gh repo edit`, `==` Java vs `===` PHP, quatre réglages en 0.2) ; documents du cours désormais via PR `docs/...`.
 
-
 ## 2026-11-16 - Étape 0.2 validée
 
 - **Fait** : extensions installées ; `.vscode/extensions.json` (9 extensions), `.vscode/settings.json`, `.editorconfig` committés sur `ch00/02-vscode` (`c550ae1`) ; police et confort de lecture ; erreur vue pendant la frappe ; premier débogage avec point d'arrêt et Debug Console.
