@@ -364,7 +364,7 @@ Le choix pour ce dépôt : squash seul. Pourquoi :
 
 Conséquence : le **titre de la PR** devient le message du commit sur `main`. Il doit donc suivre Conventional Commits.
 
-GitHub ajoute le numéro de la PR au titre : `build: add shared VSCode configuration and EditorConfig (#2)`. On remonte ainsi du commit à la discussion.
+GitHub ajoute le numéro de la PR au titre, par exemple : `build: add shared VSCode configuration and EditorConfig (#3)`. On remonte ainsi du commit à la discussion.
 
 #### Rulesets : protéger `main`
 
@@ -492,7 +492,7 @@ Durée : 15 min.
    gh pr merge --squash
    ```
 
-**Résultat attendu** : `git fetch && git log --oneline -1 origin/main` affiche `chore: repository conventions (#1)`.
+**Résultat attendu** : `git fetch && git log --oneline -1 origin/main` affiche `chore: repository conventions`, suivi du numéro de la PR entre parenthèses.
 
 > **Point d'arrêt** : vous pouvez faire une pause ici.
 
