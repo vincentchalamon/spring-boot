@@ -190,7 +190,7 @@ Les sections du bas l'emportent sur celles du haut.
 - **Formatage Java provisoire** : `editor.formatOnSave` utilise pour l'instant le formateur d'Eclipse. À l'étape 2.1, Spotless devient la référence ; on alignera alors VSCode dessus.
 - **Extension Docker en double** : `ms-azuretools.vscode-docker` est l'ancienne extension, remplacée par Container Tools. Elle peut être désinstallée.
 - **Réglage dans le mauvais bloc `[java]`** : un bloc de langage n'accepte que les réglages propres à l'éditeur (formatage, actions à l'enregistrement). Un réglage de portée projet, comme `java.configuration.updateBuildConfiguration`, y est ignoré sans erreur, juste grisé.
-- **Ligne finale effacée** : le formateur JSON de VSCode ne lit pas `.editorconfig`, mais le réglage `files.insertFinalNewline`. Sans lui dans `.vscode/settings.json`, `editor.formatOnSave` supprime la ligne vide qu'EditorConfig vient d'ajouter.
+- **Retour à la ligne final effacé** : le formateur JSON de VSCode ne lit pas `.editorconfig`, mais le réglage `files.insertFinalNewline`. Sans lui dans `.vscode/settings.json`, `editor.formatOnSave` supprime le retour à la ligne final qu'EditorConfig vient d'ajouter.
 - **Réglages imbriqués** : on écrit `"editor.formatOnSave": true`, pas `"editor": { "formatOnSave": true }`.
 - **Recommandation n'est pas installation** : un collègue peut refuser. Ce qui doit être garanti pour tous (formatage, analyse) sera vérifié par Maven et la CI au chapitre 2.
 
@@ -214,13 +214,13 @@ git fetch
 git switch -c ch00/02-vscode origin/main
 ```
 
-**Résultat attendu** : `git status` affiche `On branch ch00/02-vscode`, avec `.sdkmanrc` non suivi (il partira en 0.3).
+**Résultat attendu** : `git status` affiche `Sur la branche ch00/02-vscode`, avec `.sdkmanrc` non suivi (il partira en 0.3).
 
 #### A2. Installer les extensions manquantes
 
 Durée : 5 min.
 
-Vous avez déjà les packs Java et Spring Boot. Il manque six extensions :
+Vous avez déjà les packs Java et Spring Boot, et Container Tools. Il manque six extensions :
 
 ```bash
 code --install-extension anweber.vscode-httpyac
@@ -255,11 +255,12 @@ Créez `.vscode/extensions.json` à la racine du dépôt. Listez les neuf extens
 
 Durée : 10 min. Modèle : exemple 2.
 
-Trois réglages à mettre :
+Quatre réglages à mettre :
 
 - `editor.formatOnSave` à `true` ;
 - dans un bloc `[java]`, `editor.codeActionsOnSave` avec `"source.organizeImports": "explicit"` : trie les `import` et retire les inutilisés à l'enregistrement ;
-- `java.configuration.updateBuildConfiguration` à `"automatic"` : recharge le projet quand le `pom.xml` change (chapitre 1), sans vous poser la question à chaque fois.
+- `java.configuration.updateBuildConfiguration` à `"automatic"` : recharge le projet quand le `pom.xml` change (chapitre 1), sans vous poser la question à chaque fois ;
+- `files.insertFinalNewline` à `true` : voir le piège "Retour à la ligne final effacé".
 
 Pas de chemin de JDK, pas d'exclusion de fichiers : la recherche de VSCode ignore déjà ce qui est dans le `.gitignore`.
 
@@ -476,7 +477,7 @@ Points vérifiables :
 
 - [x] Après `code .`, le filtre `@recommended` liste les neuf extensions du projet.
 - [x] `.vscode/settings.json` ne contient aucun chemin de la machine.
-- [x] Un fichier enregistré se termine par une ligne vide et n'a pas d'espace en fin de ligne.
+- [x] Un fichier enregistré se termine par un retour à la ligne et n'a pas d'espace en fin de ligne.
 - [x] Un point d'arrêt est atteint dans `HelloWorld.java`.
 - [x] Le commit est sur la branche `ch00/02-vscode`, avec un message Conventional Commits.
 
