@@ -11,19 +11,19 @@
 
 Avancement :
 
-- [ ] A1. Créer la branche
-- [ ] A2. Voir ce que votre `.gitignore` global cache
-- [ ] A3. Écrire `.gitignore` (avec une erreur volontaire)
-- [ ] A4. Déplacer la règle `sandbox/`
-- [ ] A5. Committer `.gitignore` et `.sdkmanrc`
-- [ ] A6. Écrire le modèle de PR
-- [ ] B1. Régler les méthodes de merge
-- [ ] B2. Protéger `main`
-- [ ] B3. Tenter un push direct sur `main`
-- [ ] B4. Ouvrir et merger la PR de l'étape 0.3
-- [ ] B5. Ouvrir et merger la PR de l'étape 0.2
-- [ ] B6. Nettoyer les branches locales
-- [ ] Validation en session
+- [x] A1. Créer la branche
+- [x] A2. Voir ce que votre `.gitignore` global cache
+- [x] A3. Écrire `.gitignore` (avec une erreur volontaire)
+- [x] A4. Déplacer la règle `sandbox/`
+- [x] A5. Committer `.gitignore` et `.sdkmanrc`
+- [x] A6. Écrire le modèle de PR
+- [x] B1. Régler les méthodes de merge
+- [x] B2. Protéger `main`
+- [x] B3. Tenter un push direct sur `main`
+- [x] B4. Ouvrir et merger la PR de l'étape 0.3
+- [x] B5. Ouvrir et merger la PR de l'étape 0.2
+- [x] B6. Nettoyer les branches locales
+- [x] Validation en session
 
 Astuce : `Ctrl+Shift+O` affiche le plan du document.
 
@@ -170,8 +170,8 @@ Fichier `.github/pull_request_template.md` :
 
 ## Vérifications
 
-- [ ] `composer ci` passe en local
-- [ ] Le titre de la PR suit Conventional Commits
+- [x] `composer ci` passe en local
+- [x] Le titre de la PR suit Conventional Commits
 ```
 
 Lecture ligne par ligne :
@@ -550,11 +550,11 @@ En session, Claude :
 
 Points vérifiables :
 
-- [ ] `git check-ignore -v` sur `sandbox/x`, `target/x` et `.vscode/launch.json` : ignorés par `.gitignore`.
-- [ ] `git check-ignore -v` sur `.vscode/settings.json`, une migration `.sql` et un fichier `.http` : affichés avec une négation.
-- [ ] `.git/info/exclude` ne contient plus `sandbox/`.
-- [ ] Un push direct sur `main` est refusé.
-- [ ] Deux PR mergées en squash, chacune un seul commit sur `main`, au format Conventional Commits.
+- [x] `git check-ignore -v` sur `sandbox/x`, `target/x` et `.vscode/launch.json` : ignorés par `.gitignore`.
+- [x] `git check-ignore -v` sur `.vscode/settings.json`, une migration `.sql` et un fichier `.http` : affichés avec une négation.
+- [x] `.git/info/exclude` ne contient plus `sandbox/`.
+- [x] Un push direct sur `main` est refusé.
+- [x] Deux PR mergées en squash, chacune un seul commit sur `main`, au format Conventional Commits.
 
 Questions "expliquez" :
 
