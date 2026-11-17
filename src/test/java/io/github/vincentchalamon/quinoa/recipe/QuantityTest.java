@@ -86,4 +86,9 @@ class QuantityTest {
     void toStringReturnsCorrectFormat() {
         assertThat(new Quantity(2.5, "g").toString()).isEqualTo("2.5 g");
     }
+
+    @Test
+    void doubleArithmeticIsNotExact() {
+        assertThat(new Quantity(0.1 + 0.2, "g")).isEqualTo(new Quantity(0.30000000000000004, "g"));
+    }
 }
