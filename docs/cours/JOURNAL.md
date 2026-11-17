@@ -6,8 +6,8 @@ Claude complète ce journal en fin de session. L'entrée la plus récente est en
 
 ## Reprise
 
-- **Étape en cours** : 1.0 validée. Prochaine étape : 1.1 (projet Maven à la main), pas encore rédigée.
-- **Prochaine action** : demander "On attaque la 1.1" ; Claude rédige `etape-1.1.md`.
+- **Étape en cours** : 1.1 (projet Maven à la main), rédigée.
+- **Prochaine action** : cycle A de l'étape 1.1, sous-étape A1 (branche `ch01/01-maven`).
 - **Questions en attente** : aucune.
 
 ---

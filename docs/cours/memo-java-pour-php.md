@@ -15,6 +15,9 @@ Référence officielle : [Learn Java (dev.java)](https://dev.java/learn/) et [Th
 | `<?php` en tête de fichier | rien |
 | `namespace App\Weather;` | `package com.example.weather;` (en minuscules, reflète l'arborescence des répertoires) |
 | `use App\Weather\City;` | `import com.example.weather.City;` |
+| `use function App\Helper\format;` | `import static com.example.Helper.format;` |
+| `fn() => new City('Lille')` | `() -> new City("Lille")` (lambda, voir étape 1.3) |
+| `City::class` | `City.class` |
 | plusieurs classes par fichier possibles | une classe `public` par fichier, nommée comme le fichier |
 | code au niveau racine du script | méthode `main` (voir ci-dessous) |
 | `php script.php` | `java Script.java` (direct) ou `javac` puis `java` (voir [étape 0.1](chapitre-00/etape-0.1.md), cycle B) |
