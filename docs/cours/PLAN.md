@@ -41,7 +41,7 @@ Syntaxe de référence : [mémo Java pour un développeur PHP](memo-java-pour-ph
 
 | Chapitre | Phase | Jours | Statut |
 |---|---|---|---|
-| 0. Environnement et dépôt | guidée | 1 | en cours |
+| 0. Environnement et dépôt | guidée | 1 | terminé |
 | 1. Java moderne, sans framework | guidée | 2 | à faire |
 | 2. Qualité et CI | guidée | 1,5 | à faire |
 | Bilan 1. Étapes de recette | bilan | 0,5 | à faire |
@@ -76,7 +76,7 @@ Apport au projet : configuration VSCode partagée, `.gitignore`, modèle de PR, 
   - Livrable : `.vscode/extensions.json` (recommandations), `.vscode/settings.json` (formatage et organisation des imports à l'enregistrement ; le JDK reste dans les réglages utilisateur), `.editorconfig`.
   - Validation : VSCode propose les extensions à l'ouverture ; le `HelloWorld` se lance et se débogue depuis l'IDE (point d'arrêt atteint).
 
-- [ ] **0.3 Conventions du dépôt**
+- [x] **0.3 Conventions du dépôt**
   - Objectif : poser le cadre GitHub Flow avant d'écrire du code.
   - Notions : protection de branche, modèle de PR, `.gitignore` Java/Maven/VSCode.
   - Livrable : `.gitignore` (dont `sandbox/`), `.sdkmanrc` (créé en 0.1), `.github/pull_request_template.md`, protection de `main` (PR obligatoire ; le statut CI requis sera ajouté au chapitre 2).

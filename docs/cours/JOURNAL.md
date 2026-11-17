@@ -6,11 +6,21 @@ Claude complète ce journal en fin de session. L'entrée la plus récente est en
 
 ## Reprise
 
-- **Étape en cours** : 0.3 (conventions du dépôt), pas encore rédigée. L'étape 0.2 est validée ; sa branche `ch00/02-vscode` est committée, la PR sera ouverte en 0.3.
-- **Prochaine action** : demander "On attaque l'étape 0.3" ; Claude rédige `etape-0.3.md`.
+- **Étape en cours** : chapitre 0 terminé. Prochaine étape : 1.0 (syntaxe de base), pas encore rédigée.
+- **Prochaine action** : demander "On attaque le chapitre 1" ; Claude rédige `chapitre-01/README.md` et `etape-1.0.md`.
 - **Questions en attente** : aucune.
 
 ---
+
+## 2026-11-17 - Étape 0.3 validée, chapitre 0 terminé
+
+- **Fait** : `.gitignore` (contenu de `.vscode/` sauf les deux fichiers partagés, `target/`, `sandbox/`, négations de `*.sql` et `*.http` contre le `.gitignore` global) ; `.sdkmanrc` committé ; modèle de PR ; merge en squash seul, titre de PR comme message ; ruleset `main` sans exception. Push direct refusé (`GH013`, règle citée : "merges must occur on the web"). PR #2 (0.3) et #3 (0.2) mergées.
+- **Corrigé en revue** : négation sous `.vscode/` (dossier exclu) laissée en l'état après l'erreur volontaire ; `target/` et négations `*.sql` / `*.http` oubliées ; modèle de PR recopié de l'exemple (`composer ci`) ; description de PR : `gh check-ignore` au lieu de `git check-ignore`, "Quoi" incomplet, test limité au cas simple.
+- **Incident** : B6 fait avant B5. La branche `ch00/02-vscode`, jamais poussée, a été supprimée par `git branch -D` ; commit retrouvé via le reflog et branche recréée.
+- **Appris** : trois niveaux d'ignore (global, projet, `.git/info/exclude`) et leur priorité ; pas de ré-inclusion sous un dossier exclu ; modèle de PR lu sur la branche par défaut ; squash et titre de PR ; `check-ignore` n'affiche pas les fichiers suivis (`--no-index`).
+- **Rappel 0.1** : `java Weather.class` presque juste (attribué à tort au mot-clé `class` : c'est la classe `class` du package `Weather`) ; valeur exacte de `compareTo` (`0`) non donnée.
+- **Flou** : le squash "réécrit" les commits (non : il en crée un nouveau sur `main`, la branche reste intacte) ; reflog vu en passant seulement.
+- **Cours** : relecture du chapitre 0 (PR #1 : B1 en une commande `gh repo edit`, `==` Java vs `===` PHP, quatre réglages en 0.2) ; documents du cours désormais via PR `docs/...`.
 
 ## 2026-11-16 - Étape 0.2 validée
 
