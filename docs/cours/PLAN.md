@@ -94,7 +94,7 @@ Fil rouge `Quantity` : la même valeur est réécrite à chaque étape avec un m
   - Livrable : `Quantity` en classe classique (valeur `double`, unité `String`, validation dans le constructeur) et un `main` de démonstration qui lit `250 g` en argument ; dans `sandbox/1.0/`, vérifié en session.
   - Validation : programme fonctionnel, y compris sur une entrée invalide ; Vincent retrouve seul dans la Javadoc la méthode adaptée à un besoin donné.
 
-- [ ] **1.1 Projet Maven à la main**
+- [x] **1.1 Projet Maven à la main**
   - Objectif : comprendre Maven avant que Spring ne le cache.
   - Notions : `pom.xml` (équivalent de `composer.json`), coordonnées `groupId:artifactId:version`, cycle de vie (`compile`, `test`, `package`, `verify`), arborescence `src/main/java` / `src/test/java`, packages (équivalent des namespaces PSR-4), Maven Wrapper (`mvnw`, équivalent d'un binaire Composer versionné), `maven-compiler-plugin` et `release`.
   - Notions complémentaires : packaging `jar` (`./mvnw package`).

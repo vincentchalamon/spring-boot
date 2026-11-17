@@ -6,11 +6,21 @@ Claude complète ce journal en fin de session. L'entrée la plus récente est en
 
 ## Reprise
 
-- **Étape en cours** : 1.1 (projet Maven à la main), rédigée.
-- **Prochaine action** : cycle A de l'étape 1.1, sous-étape A1 (branche `ch01/01-maven`).
+- **Étape en cours** : 1.1 validée. Prochaine étape : 1.2 (enums et records), pas encore rédigée.
+- **Prochaine action** : demander "On attaque la 1.2" ; Claude rédige `etape-1.2.md`. Vérifier avant que la PR #8 est mergée.
 - **Questions en attente** : aucune.
 
 ---
+
+## 2026-11-17 - Étape 1.1 validée
+
+- **Fait** : Maven Wrapper (Maven 3.9.16), `pom.xml` (`io.github.vincentchalamon:obi-wan-quinoa-api`, JUnit 6.1.3 via BOM, AssertJ 3.27.7, compiler et Surefire épinglés), `Quantity` dans `io.github.vincentchalamon.quinoa.recipe`, `QuantityTest` (19 tests, dont des tests paramétrés en avance sur la 1.2). PR #8.
+- **Initiatives** : `@ParameterizedTest` / `@ValueSource` utilisés dès la 1.1 ; `hasToString`.
+- **Corrigé en revue** : règle de l'unité non testée (atteignable seulement par le constructeur) ; `assertThat(...)` au lieu de `assertThatThrownBy` (erreur de compilation) ; `hasCause` (type et message) au lieu de `hasCauseInstanceOf` ; message attendu recalculé dans le test ; noms de tests (`parsesText` qui testait `toString`) ; `isTrue()` sur `equals` ; type de commit `tests:` ; titre et description de PR. Test des `double` corrigé par Claude à la demande de Vincent (limite énoncée par `isNotEqualTo(0.3)`).
+- **Incidents** : `pom.xml` vide car non enregistré (`input contained no data`, pris pour un problème de droits) ; VSCode gardait le dépôt en "projet invisible" : nettoyage du workspace Java puis "Reload Window". Les deux ajoutés aux pièges de l'étape.
+- **Appris** : GAV, `-SNAPSHOT`, phases du cycle de vie, plugins vs dépendances, `pluginManagement`, scope `test`, BOM (liste de versions importée), médiation des versions "la plus proche gagne" (pas de résolution de contraintes comme Composer), Wrapper (`mvnw`), pas d'alias d'import en Java, JUnit / AssertJ face à PHPUnit, `@CsvSource` (vide = `null`, `''` = chaîne vide).
+- **Flou** : le BOM (compris après une explication en trois temps) ; la correspondance par `groupId:artifactId` exact, pas par préfixe.
+- **À consolider** : description de PR (incomplète deux PR de suite : "Quoi" partiel, "Comment c'est testé" sans résultat attendu) ; choix du type Conventional Commits (`test:` puis `chore:` avant `build:`) ; un test qui documente une limite doit l'énoncer.
 
 ## 2026-11-17 - Étape 1.0 validée
 
