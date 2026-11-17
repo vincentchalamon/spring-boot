@@ -2,7 +2,7 @@
 
 Aide-mémoire de syntaxe, complété au fil des chapitres. Chaque section met en regard PHP et Java ; les exemples sont génériques (sans lien avec le code du projet).
 
-Sections : [Fichier et programme](#fichier-et-programme) - [Variables et types](#variables-et-types) - [Chaînes](#chaînes) - [Opérateurs et comparaisons](#opérateurs-et-comparaisons) - [Contrôle de flux](#contrôle-de-flux) - [Tableaux](#tableaux) - [Méthodes](#méthodes) - [Classes et objets](#classes-et-objets) - [Exceptions](#exceptions)
+Sections : [Fichier et programme](#fichier-et-programme) - [Variables et types](#variables-et-types) - [Chaînes](#chaînes) - [Opérateurs et comparaisons](#opérateurs-et-comparaisons) - [Contrôle de flux](#contrôle-de-flux) - [Tableaux](#tableaux) - [Méthodes](#méthodes) - [Classes et objets](#classes-et-objets) - [Exceptions](#exceptions) - [Égalité et affichage d'un objet](#égalité-et-affichage-dun-objet)
 
 Référence officielle : [Learn Java (dev.java)](https://dev.java/learn/) et [The Java Tutorials](https://docs.oracle.com/javase/tutorial/).
 
@@ -18,6 +18,8 @@ Référence officielle : [Learn Java (dev.java)](https://dev.java/learn/) et [Th
 | plusieurs classes par fichier possibles | une classe `public` par fichier, nommée comme le fichier |
 | code au niveau racine du script | méthode `main` (voir ci-dessous) |
 | `php script.php` | `java Script.java` (direct) ou `javac` puis `java` (voir [étape 0.1](chapitre-00/etape-0.1.md), cycle B) |
+| `fwrite(STDERR, "...")` | `System.err.println("...")` |
+| `exit(1);` | `System.exit(1);` |
 
 ```java
 package com.example.weather;
@@ -87,6 +89,9 @@ String text = """
 | `str_contains($s, 'x')` | `s.contains("x")` |
 | `$a === $b` | `a.equals(b)` |
 | `$s === ''` | `s.isEmpty()` (ou `s.isBlank()` pour ignorer les espaces) |
+| `explode(' ', $s)` | `s.split(" ")` : renvoie un `String[]` ; l'argument est une **expression régulière** |
+| `(float) $s` | `Double.parseDouble(s)` : lance `NumberFormatException` si `s` n'est pas un nombre ; point décimal uniquement |
+| `(int) $s` | `Integer.parseInt(s)` : idem |
 
 ## Opérateurs et comparaisons
 
@@ -224,4 +229,42 @@ try {
 throw new IllegalArgumentException("La quantité doit être positive");
 ```
 
+`NumberFormatException` hérite d'`IllegalArgumentException` : un `catch (IllegalArgumentException e)` attrape les deux.
+
 Proche de PHP. Différence majeure : les exceptions **vérifiées** (*checked*, dérivées d'`Exception` hors `RuntimeException`) doivent être soit attrapées, soit déclarées dans la signature (`throws IOException`), sinon le code ne compile pas. Détails au chapitre 1.
+
+## Égalité et affichage d'un objet
+
+En PHP, `==` compare les propriétés de deux objets. En Java, il faut redéfinir les trois méthodes héritées d'`Object` (voir [étape 1.0](chapitre-01/etape-1.0.md), cycle B).
+
+```java
+@Override                                   // #[\Override] en PHP 8.3
+public boolean equals(Object other) {       // paramètre Object, signature imposée
+    if (this == other) {
+        return true;
+    }
+    if (!(other instanceof City city)) {    // instanceof avec variable : city est déjà typée
+        return false;
+    }
+
+    return population == city.population && name.equals(city.name);
+}
+
+@Override
+public int hashCode() {
+    return Objects.hash(name, population);  // mêmes champs que equals (import java.util.Objects)
+}
+
+@Override
+public String toString() {                  // __toString()
+    return name + " (" + population + ")";
+}
+```
+
+| Méthode | Par défaut | Règle |
+|---|---|---|
+| `equals` | identité (`==`) | comparer les champs ; `Double.compare(a, b) == 0` pour un `double` |
+| `hashCode` | lié à l'identité | égaux selon `equals` : même `hashCode` |
+| `toString` | `City@6379eb` | texte lisible |
+
+À l'étape 1.2, un `record` génère ces trois méthodes.
