@@ -103,7 +103,7 @@ Fil rouge `Quantity` : la même valeur est réécrite à chaque étape avec un m
 
 - [ ] **1.2 Enums et records : type, régime, unité, quantité**
   - Objectif : modéliser des valeurs immuables et sûres.
-  - Notions : classes, interfaces, visibilité, `final`, `static` ; `enum` avec attributs et méthodes ; `record` et constructeur compact (invariants) ; `equals` / `hashCode` / `toString` ; `==` vs `equals` ; `BigDecimal` vs `double` (précision, échelle, `compareTo` vs `equals`) ; exceptions non vérifiées (`IllegalArgumentException`) ; nullité (JSpecify `@NullMarked`, `@Nullable`, utilisés par Spring 7) ; tests paramétrés `@ParameterizedTest` / `@CsvSource` (équivalent des `dataProvider` PHPUnit), `assertThatThrownBy`.
+  - Notions : `enum` avec attributs et méthodes ; `record` et constructeur compact (invariants) ; `equals` / `hashCode` / `toString` ; `==` vs `equals` ; `BigDecimal` vs `double` (précision, échelle, `compareTo` vs `equals`) ; exceptions non vérifiées (`IllegalArgumentException`) ; nullité (JSpecify `@NullMarked`, `@Nullable`, utilisés par Spring 7) ; tests paramétrés `@ParameterizedTest` / `@CsvSource` (équivalent des `dataProvider` PHPUnit), `assertThatThrownBy`.
   - Livrable : enums `RecipeType` et `Diet` ; enum `Unit` (`GRAM`, `MILLILITER`, `TEASPOON`, `TABLESPOON` et unités non convertibles : pièce, pincée, etc.) ; `Quantity` réécrite en record (`BigDecimal` + `Unit`, invariants validés), en comparant avec la classe de l'étape 1.0.
   - Validation : tests unitaires des invariants (valeur nulle ou négative refusée, égalité de `1.0` et `1.00`).
 
@@ -161,7 +161,7 @@ Apport au projet : l'application Spring Boot, sa configuration typée, PostgreSQ
 
 - [ ] **3.2 Conteneur IoC et injection de dépendances**
   - Objectif : comprendre ce que Spring fait de vos classes.
-  - Notions : beans, `@Component` / `@Service` / `@Repository`, injection par constructeur (pourquoi pas par champ), `@Configuration` / `@Bean`, scopes (singleton par défaut : conséquences sur l'état), cycle de vie, profils ; parallèle avec l'autowiring de `services.yaml`.
+  - Notions : interfaces (et pourquoi ne pas en créer pour une seule implémentation), beans, `@Component` / `@Service` / `@Repository`, injection par constructeur (pourquoi pas par champ), `@Configuration` / `@Bean`, scopes (singleton par défaut : conséquences sur l'état), cycle de vie, profils ; parallèle avec l'autowiring de `services.yaml`.
   - Livrable : un service applicatif injecté (ex. adaptation d'une liste d'ingrédients) et un test unitaire sans Spring.
   - Validation : Vincent explique la différence entre un test unitaire pur, `@SpringBootTest` et un test de slice.
 
@@ -398,3 +398,4 @@ Apport au projet : logs structurés, métriques, image OCI et CI complète.
 | 2026-11-16 | Documents du cours : un dossier par chapitre, un fichier par étape, mise en forme aérée et régulière (règles dans `CLAUDE.md`). |
 | 2026-11-17 | `main` protégée par une ruleset sans exception (bypass list vide) ; merge en squash seul, titre de PR = commit sur `main`. Les documents du cours passent aussi par une PR `docs/...`, mergée par Claude après validation. |
 | 2026-11-17 | Étape 1.2 : `Unit` porte un symbole (`g`, `ml`, `càc`, `càs`, `pièce`, `pincée`...) utilisé par `Quantity.parse` et `toString` ; noms des constantes en anglais = futurs codes de l'API ; `Quantity.value` normalisée par `stripTrailingZeros` ; `null` refusé par `NullPointerException` (`requireNonNull`), valeur invalide par `IllegalArgumentException` ; packages `@NullMarked` (JSpecify). Listes de `RecipeType` et `Diet` proposées, à valider par Vincent. |
+| 2026-11-17 | Notions de l'étape 1.2 recentrées : classes, visibilité, `final` et `static` déjà vus en 1.0 ; les interfaces passent à l'étape 3.2 (injection de dépendances). |

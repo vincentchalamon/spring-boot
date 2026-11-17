@@ -737,7 +737,18 @@ Durée : 10 min. Modèle : `decimalArithmeticIsExact` (exemple 5).
 ./mvnw -ntp -q test -Dtest='QuantityTest'
 ```
 
-**Résultat attendu** : à l'étape 4, un échec sur `isNotEqualTo`. À l'étape 5, `BUILD SUCCESS`, et un test qui affirme que `0.1 + 0.2` g égale `0.3` g.
+**Résultat attendu** à l'étape 4 :
+
+```console
+java.lang.AssertionError:
+
+Expecting actual:
+  0.3 g
+not to be equal to:
+  0.3 g
+```
+
+À l'étape 5, `BUILD SUCCESS`, et un test qui affirme que `0.1 + 0.2` g égale `0.3` g.
 
 #### B5. Comparer avec la classe de l'étape 1.1
 
@@ -748,7 +759,7 @@ diff sandbox/1.2/QuantityClass.java src/main/java/io/github/vincentchalamon/quin
 wc -l sandbox/1.2/QuantityClass.java src/main/java/io/github/vincentchalamon/quinoa/recipe/Quantity.java
 ```
 
-**Résultat attendu** : `wc -l` montre un record nettement plus court que la classe.
+**Résultat attendu** : `wc -l` montre un record nettement plus court que la classe. Ordre de grandeur, sur la solution de référence : 72 lignes pour la classe, 40 pour le record.
 
 Notez, pour la session :
 
