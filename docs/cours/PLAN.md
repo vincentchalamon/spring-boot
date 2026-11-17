@@ -396,3 +396,4 @@ Apport au projet : logs structurés, métriques, image OCI et CI complète.
 | 2026-11-16 | Durées indicatives (effort, pas calendrier) ; reprise via le journal (`JOURNAL.md`), rituels de début et de fin de session. |
 | 2026-11-16 | VSCode : httpYac plutôt que REST Client (non maintenu depuis 2022). Aucun chemin de machine dans `.vscode/settings.json` : le JDK du projet est détecté par l'extension Java (SDKMAN) ou fixé dans les réglages utilisateur. |
 | 2026-11-16 | Documents du cours : un dossier par chapitre, un fichier par étape, mise en forme aérée et régulière (règles dans `CLAUDE.md`). |
+| 2026-11-17 | `main` protégée par une ruleset sans exception (bypass list vide) ; merge en squash seul, titre de PR = commit sur `main`. Les documents du cours passent aussi par une PR `docs/...`, mergée par Claude après validation. |

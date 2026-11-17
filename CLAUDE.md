@@ -119,7 +119,8 @@ Le plan peut évoluer : toute modification de périmètre ou de choix technique 
 - Une branche par étape, créée depuis `origin/main` : `chXX/YY-slug` (ex. `ch01/02-quantity`) ; pour un bilan : `bilan-N/slug`.
 - Conventional Commits (`feat:`, `fix:`, `test:`, `build:`, `ci:`, `docs:`, `refactor:`, `chore:`).
 - Une PR par étape, relue par Claude (GitHub Action et/ou en session). Vincent merge.
-- Exception : les documents du cours (`docs/`, `CLAUDE.md`) peuvent être committés directement sur `main` par Claude après validation de Vincent.
+- Merge en squash seul : le titre de la PR devient le commit sur `main`, il suit donc Conventional Commits.
+- Documents du cours (`docs/`, `CLAUDE.md`) : Claude les committe sur une branche `docs/slug` (via un worktree, sans changer la branche de Vincent), ouvre la PR et la merge après validation de Vincent. Aucune exception à la protection de `main`.
 - Ne jamais ajouter de mention "Generated with Claude Code" ni de co-auteur Claude.
 
 ## Revue de code (PR et session)
