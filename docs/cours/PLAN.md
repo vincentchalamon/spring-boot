@@ -42,7 +42,7 @@ Syntaxe de référence : [mémo Java pour un développeur PHP](memo-java-pour-ph
 | Chapitre | Phase | Jours | Statut |
 |---|---|---|---|
 | 0. Environnement et dépôt | guidée | 1 | terminé |
-| 1. Java moderne, sans framework | guidée | 2 | à faire |
+| 1. Java moderne, sans framework | guidée | 2 | en cours |
 | 2. Qualité et CI | guidée | 1,5 | à faire |
 | Bilan 1. Étapes de recette | bilan | 0,5 | à faire |
 | 3. Fondamentaux Spring Boot | semi-guidée | 2 | à faire |
@@ -84,7 +84,7 @@ Apport au projet : configuration VSCode partagée, `.gitignore`, modèle de PR, 
 
 ## Chapitre 1 - Java moderne, sans framework
 
-Apport au projet : le projet Maven et les types de valeur de la recette (type, régime, unité, quantité, ingrédient), en Java pur et testés, réutilisés tels quels au chapitre 4 (`@Embeddable`, enums JPA). La mise à l'échelle des portions et la conversion métrique/US sont à la charge du front (hors-ligne) : l'API stocke et expose des quantités structurées en unités canoniques.
+Apport au projet : le projet Maven et les types de valeur de la recette (type, régime, unité, quantité, ingrédient), en Java pur et testés, réutilisés tels quels au chapitre 4 (`@Embeddable`, enums JPA). La mise à l'échelle des portions et la conversion métrique/US sont à la charge du front (hors-ligne) : l'API stocke et expose des quantités structurées en unités canoniques. Détail : [chapitre-01](chapitre-01/README.md).
 
 Fil rouge `Quantity` : la même valeur est réécrite à chaque étape avec un meilleur outil (classe classique en 1.0, projet Maven et tests en 1.1, record avec `BigDecimal` et enum `Unit` en 1.2). Elle devient ensuite un composant de `Ingredient` (1.3), un `@Embeddable` (4.2), un champ des DTO JSON (5.1, 7.1) et un schéma du contrat OpenAPI (6.1).
 

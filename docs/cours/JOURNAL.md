@@ -6,8 +6,8 @@ Claude complète ce journal en fin de session. L'entrée la plus récente est en
 
 ## Reprise
 
-- **Étape en cours** : chapitre 0 terminé. Prochaine étape : 1.0 (syntaxe de base), pas encore rédigée.
-- **Prochaine action** : demander "On attaque le chapitre 1" ; Claude rédige `chapitre-01/README.md` et `etape-1.0.md`.
+- **Étape en cours** : 1.0 (syntaxe de base), rédigée.
+- **Prochaine action** : cycle A de l'étape 1.0, sous-étape A1 (prédictions jshell).
 - **Questions en attente** : aucune.
 
 ---
