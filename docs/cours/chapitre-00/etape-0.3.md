@@ -33,7 +33,7 @@ Astuce : `Ctrl+Shift+O` affiche le plan du document.
 
 ### Théorie
 
-Vous connaissez `.gitignore`. Cette partie ne couvre que ce qui change pour un projet Java, et deux pièges que votre machine rend concrets.
+Vous connaissez `.gitignore`. Cette partie ne couvre que ce qui change pour un projet Java, et un piège que votre machine rend concret.
 
 #### Trois endroits pour ignorer un fichier
 
@@ -364,7 +364,7 @@ Le choix pour ce dépôt : squash seul. Pourquoi :
 
 Conséquence : le **titre de la PR** devient le message du commit sur `main`. Il doit donc suivre Conventional Commits.
 
-GitHub ajoute le numéro de la PR au titre : `build: add shared VSCode configuration (#2)`. On remonte ainsi du commit à la discussion.
+GitHub ajoute le numéro de la PR au titre : `build: add shared VSCode configuration and EditorConfig (#2)`. On remonte ainsi du commit à la discussion.
 
 #### Rulesets : protéger `main`
 
@@ -403,14 +403,14 @@ Conséquence pour Claude : il pousse avec votre compte, il est donc bloqué lui 
 Durée : 5 min.
 
 ```bash
-gh repo edit --enable-squash-merge --enable-merge-commit=false --enable-rebase-merge=false --delete-branch-on-merge
-gh api -X PATCH repos/vincentchalamon/spring-boot -f squash_merge_commit_title=PR_TITLE -f squash_merge_commit_message=BLANK
+gh repo edit --enable-squash-merge --squash-merge-commit-message pr-title --enable-merge-commit=false --enable-rebase-merge=false --delete-branch-on-merge
 ```
 
 Lecture :
 
-- la première commande ne garde que le squash, et supprime la branche distante après le merge ;
-- la seconde fixe le message du commit squashé : le titre de la PR, sans corps. Ces deux réglages n'existent pas dans `gh repo edit`, d'où l'appel direct à l'API.
+- `--enable-squash-merge` et les deux `=false` : seul le squash reste autorisé ;
+- `--squash-merge-commit-message pr-title` : le commit squashé reprend le titre de la PR, sans corps ;
+- `--delete-branch-on-merge` : la branche distante est supprimée après le merge.
 
 **Résultat attendu** :
 
@@ -472,6 +472,7 @@ Durée : 15 min.
 2. Le modèle n'est pas encore sur `main` : remplissez-le à la main, dans un fichier du bac à sable.
 
    ```bash
+   mkdir -p sandbox/0.3
    cp .github/pull_request_template.md sandbox/0.3/pr-0.3.md
    ```
 
@@ -578,4 +579,4 @@ Questions "expliquez" :
 
 - **Require linear history** : une règle de plus, qui interdit les commits de merge sur `main`. Redondante ici avec "squash seul", utile si vous autorisez un jour le rebase.
 - **Mettre la ruleset en code** : `gh api repos/vincentchalamon/spring-boot/rulesets/<id>` renvoie la ruleset en JSON. On peut la sauvegarder et la recréer avec `gh api -X POST ... --input fichier.json`.
-- **Auto-merge** : `gh pr merge --auto --squash` merge la PR dès que la CI est verte. Intéressant à partir du chapitre 2.
+- **Auto-merge** : `gh pr merge --auto --squash` merge la PR dès que la CI est verte. À activer d'abord sur le dépôt (`gh repo edit --enable-auto-merge`). Intéressant à partir du chapitre 2.

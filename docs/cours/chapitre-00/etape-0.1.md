@@ -250,7 +250,7 @@ Causé par : java.lang.ClassNotFoundException: Weather.class
 
 - `javac` produit `Weather.class` : le bytecode.
 - `java Weather` prend un **nom de classe**, cherché dans le répertoire courant.
-- `java Weather.class` échoue : Java cherche une classe qui s'appellerait `Weather.class`.
+- `java Weather.class` échoue : Java lit `Weather.class` comme un nom complet, la classe `class` du package `Weather`. Il cherche donc un fichier `Weather/class.class`, qui n'existe pas.
 
 #### Exemple 3 : la forme compacte (Java 25)
 
@@ -356,7 +356,7 @@ Autres commandes : `/list` (historique), `/imports`, `/help`. La flèche haut ra
 
 - **`java HelloWorld.class`** : `java` attend un nom de classe ou un fichier `.java`, jamais un `.class`.
 - **Nom de fichier et de classe** : une classe `public` doit être dans un fichier du même nom. La casse compte.
-- **`==` sur des objets** : compare l'identité des objets, pas leur contenu. Ce n'est ni le `==` ni le `===` de PHP. Pour comparer le contenu : `equals`. Vous le constaterez en B6.
+- **`==` sur des objets** : compare l'identité des objets, pas leur contenu, comme `===` sur des objets PHP. La surprise : en Java, une `String` est un objet, alors qu'en PHP une chaîne est une valeur. Pour comparer le contenu : `equals`. Vous le constaterez en B6.
 
 ### Vérifiez votre compréhension
 
