@@ -6,11 +6,20 @@ Claude complète ce journal en fin de session. L'entrée la plus récente est en
 
 ## Reprise
 
-- **Étape en cours** : 1.0 (syntaxe de base), rédigée.
-- **Prochaine action** : cycle A de l'étape 1.0, sous-étape A1 (prédictions jshell).
+- **Étape en cours** : 1.0 validée. Prochaine étape : 1.1 (projet Maven à la main), pas encore rédigée.
+- **Prochaine action** : demander "On attaque la 1.1" ; Claude rédige `etape-1.1.md`.
 - **Questions en attente** : aucune.
 
 ---
+
+## 2026-11-17 - Étape 1.0 validée
+
+- **Fait** : `ReadQuantity.java` (cycle A) ; `Quantity.java` (classe `final`, champs `private final`, validation dans le constructeur, `parse`, `equals` / `hashCode` / `toString`) et `QuantityDemo.java` (cycle B), dans `sandbox/1.0/`. Toutes les entrées invalides donnent un message et le code `1`.
+- **Initiatives** : messages distincts pour "argument manquant" et "trop d'arguments" ; `parse` enveloppe la `NumberFormatException` dans un message plus clair, en conservant la cause.
+- **Corrigé en revue** : règle "exactement deux parties" écrite `> 2` (pile d'exception sur `"250 "`) ; `%.1f` arrondissait `0.25` en `0,3` (locale) ; `Double` au lieu de `double` ; `isNaN || isInfinite` au lieu de `isFinite` ; `trim().isEmpty()` puis `isEmpty() || isBlank()` au lieu de `isBlank()` ; cause d'exception perdue ; classe non `final`.
+- **Appris** : `instanceof` simple vs avec variable (test + cast) ; constructeur vs méthode statique vs méthode d'instance ; méthode de fabrique (`parse`) ; `this` implicite, obligatoire seulement en cas de masquage ; `hashCode` par défaut lié à l'identité, collisions normales, contrat à sens unique ; buckets d'un `HashSet` ; `List` / `Map` / `Set` face au tableau PHP ; `Math.round` renvoie un `long` et arrondit les moitiés vers plus l'infini.
+- **Flou** : correspondance des collections avec le tableau PHP (`HashSet` d'abord pris pour un tableau associatif, qui est une `Map`) ; méthode de fabrique d'abord vue comme l'outil par défaut, puis comme le moyen de l'injection de dépendances (c'est le constructeur classique) ; `final` sur la classe ne rend pas les champs `final`.
+- **Javadoc** : `isFinite` trouvée par l'autocomplétion ; `Math.round` trouvée dans la Javadoc, type de retour lu dans "Returns".
 
 ## 2026-11-17 - Étape 0.3 validée, chapitre 0 terminé
 

@@ -88,7 +88,7 @@ Apport au projet : le projet Maven et les types de valeur de la recette (type, r
 
 Fil rouge `Quantity` : la même valeur est réécrite à chaque étape avec un meilleur outil (classe classique en 1.0, projet Maven et tests en 1.1, record avec `BigDecimal` et enum `Unit` en 1.2). Elle devient ensuite un composant de `Ingredient` (1.3), un `@Embeddable` (4.2), un champ des DTO JSON (5.1, 7.1) et un schéma du contrat OpenAPI (6.1).
 
-- [ ] **1.0 Syntaxe de base**
+- [x] **1.0 Syntaxe de base**
   - Objectif : écrire de petits programmes Java avant d'aborder Maven.
   - Notions : types primitifs et objets, `String`, opérateurs, conditions, boucles, tableaux, méthodes, classes (champs, constructeur, `this`, visibilité), `equals` / `hashCode` / `toString` écrits à la main, exceptions (`throw`, `try` / `catch`), conversion texte vers nombre ; lire une Javadoc.
   - Livrable : `Quantity` en classe classique (valeur `double`, unité `String`, validation dans le constructeur) et un `main` de démonstration qui lit `250 g` en argument ; dans `sandbox/1.0/`, vérifié en session.

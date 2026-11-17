@@ -11,16 +11,16 @@
 
 Avancement :
 
-- [ ] A1. Prédire dans jshell
-- [ ] A2. Écrire `ReadQuantity.java`
-- [ ] A3. Tester les entrées invalides
-- [ ] B1. Écrire la classe `Quantity`
-- [ ] B2. Ajouter `parse`
-- [ ] B3. Écrire `QuantityDemo.java`
-- [ ] B4. Ajouter `toString`
-- [ ] B5. Ajouter `equals`, puis `hashCode`
-- [ ] B6. Chercher dans la Javadoc
-- [ ] Validation en session
+- [x] A1. Prédire dans jshell
+- [x] A2. Écrire `ReadQuantity.java`
+- [x] A3. Tester les entrées invalides
+- [x] B1. Écrire la classe `Quantity`
+- [x] B2. Ajouter `parse`
+- [x] B3. Écrire `QuantityDemo.java`
+- [x] B4. Ajouter `toString`
+- [x] B5. Ajouter `equals`, puis `hashCode`
+- [x] B6. Chercher dans la Javadoc
+- [x] Validation en session
 
 Astuce : `Ctrl+Shift+O` affiche le plan du document.
 
@@ -844,12 +844,12 @@ En session, Claude :
 
 Points vérifiables :
 
-- [ ] `ReadQuantity.java` respecte les cinq règles de A2.
-- [ ] `java QuantityDemo.java "250 g"` donne le résultat attendu de B5.
-- [ ] Toutes les entrées invalides de B6 donnent un message et le code `1`.
-- [ ] Les deux champs de `Quantity` sont `private final`.
-- [ ] La validation n'existe qu'à un seul endroit : le constructeur.
-- [ ] `@Override` est présent sur les trois méthodes d'`Object`.
+- [x] `ReadQuantity.java` respecte les cinq règles de A2.
+- [x] `java QuantityDemo.java "250 g"` donne le résultat attendu de B5.
+- [x] Toutes les entrées invalides de B6 donnent un message et le code `1`.
+- [x] Les deux champs de `Quantity` sont `private final`.
+- [x] La validation n'existe qu'à un seul endroit : le constructeur.
+- [x] `@Override` est présent sur les trois méthodes d'`Object`.
 
 Questions "expliquez" :
 
