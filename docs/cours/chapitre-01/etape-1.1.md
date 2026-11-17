@@ -11,18 +11,18 @@
 
 Avancement :
 
-- [ ] A1. Créer la branche
-- [ ] A2. Générer le Maven Wrapper
-- [ ] A3. Écrire le `pom.xml`
-- [ ] A4. Déplacer `Quantity` dans son package
-- [ ] A5. Compiler avec `./mvnw compile`
-- [ ] B1. Écrire le premier test
-- [ ] B2. Mettre un test au mauvais endroit
-- [ ] B3. Tester les règles de `Quantity`
-- [ ] B4. Révéler le problème des `double`
-- [ ] B5. Lancer les tests depuis VSCode
-- [ ] B6. Committer et ouvrir la PR
-- [ ] Validation en session
+- [x] A1. Créer la branche
+- [x] A2. Générer le Maven Wrapper
+- [x] A3. Écrire le `pom.xml`
+- [x] A4. Déplacer `Quantity` dans son package
+- [x] A5. Compiler avec `./mvnw compile`
+- [x] B1. Écrire le premier test
+- [x] B2. Mettre un test au mauvais endroit
+- [x] B3. Tester les règles de `Quantity`
+- [x] B4. Révéler le problème des `double`
+- [x] B5. Lancer les tests depuis VSCode
+- [x] B6. Committer et ouvrir la PR
+- [x] Validation en session
 
 Astuce : `Ctrl+Shift+O` affiche le plan du document.
 
@@ -297,6 +297,8 @@ Le **tout premier** lancement télécharge Maven, puis chaque plugin : plusieurs
 - **Une plage de versions** (`[1.0,2.0)`) : Maven le permet, mais personne ne le fait. Version exacte, toujours.
 - **Package et répertoire différents** : `javac` ne vérifie pas que la ligne `package` correspond au répertoire. Le code compile, mais la classe se retrouve ailleurs dans `target/classes/`, et VSCode signale une erreur. Gardez-les identiques.
 - **`dependencyManagement` seul** : déclarer JUnit dans `dependencyManagement` ne l'ajoute pas au projet. Il faut aussi l'entrée dans `dependencies`.
+- **`Non-readable POM ... input contained no data`** : le `pom.xml` est **vide** sur le disque, le plus souvent parce qu'il n'est pas encore enregistré dans VSCode (un point sur l'onglet). Ce n'est pas un problème de droits : dans ce cas, le message finit par `Permission non accordée`.
+- **VSCode n'importe pas le projet Maven** : si le dossier a été ouvert avant l'existence du `pom.xml`, le serveur Java peut le garder en "projet invisible". Symptômes : pas de triangle de test dans la marge, `is not on its project's build path` dans les journaux. Remède : `Ctrl+Shift+P`, "Java: Clean Java Language Server Workspace", puis si besoin "Developer: Reload Window".
 
 ### Vérifiez votre compréhension
 
@@ -789,12 +791,12 @@ En session, Claude :
 
 Points vérifiables :
 
-- [ ] `./mvnw clean verify` passe depuis un clone propre.
-- [ ] `./mvnw -v` affiche Maven 3.9.16.
-- [ ] Le `.jar` ne contient ni test ni dépendance de test.
-- [ ] Chaque règle de `Quantity` a son test.
-- [ ] Le test des `double` passe et documente la limite.
-- [ ] Les tests se lancent depuis VSCode.
+- [x] `./mvnw clean verify` passe depuis un clone propre.
+- [x] `./mvnw -v` affiche Maven 3.9.16.
+- [x] Le `.jar` ne contient ni test ni dépendance de test.
+- [x] Chaque règle de `Quantity` a son test.
+- [x] Le test des `double` passe et documente la limite.
+- [x] Les tests se lancent depuis VSCode.
 
 Questions "expliquez" :
 
