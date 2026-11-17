@@ -1,0 +1,16 @@
+## Quoi
+
+<!-- Ce que change la PR, en une ou deux phrases. -->
+
+## Pourquoi
+
+<!-- Le besoin. Lien vers l'issue s'il y en a une. -->
+
+## Comment c'est testé
+
+<!-- Tests ajoutés, commandes à lancer, résultat attendu. -->
+
+## Vérifications
+
+- [ ] Le titre de la PR suit Conventional Commits
+- [ ] Périmètre de l'étape respecté

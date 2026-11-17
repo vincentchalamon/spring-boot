@@ -1,0 +1,10 @@
+/.vscode/*
+!/.vscode/settings.json
+!/.vscode/extensions.json
+sandbox/
+target/
+
+# Allow sql and http files to be tracked
+# Overrides global gitignore rules
+!*.sql
+!*.http
