@@ -11,9 +11,9 @@
 
 Avancement :
 
-- [ ] A1. Prédire dans jshell
-- [ ] A2. Écrire `ReadQuantity.java`
-- [ ] A3. Tester les entrées invalides
+- [x] A1. Prédire dans jshell
+- [x] A2. Écrire `ReadQuantity.java`
+- [x] A3. Tester les entrées invalides
 - [ ] B1. Écrire la classe `Quantity`
 - [ ] B2. Ajouter `parse`
 - [ ] B3. Écrire `QuantityDemo.java`
