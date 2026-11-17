@@ -31,6 +31,7 @@ Toujours `./mvnw`, jamais `mvn`.
 | `./mvnw clean verify` | idem, en repartant de zéro |
 | `./mvnw -v` | versions de Maven et du JDK |
 | `./mvnw dependency:tree` | arbre des dépendances |
+| `./mvnw test -Dtest='FooTest#bar'` | un seul test |
 
 Options :
 

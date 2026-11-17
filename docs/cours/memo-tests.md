@@ -52,7 +52,43 @@ assertThatThrownBy(() -> new Price(-1, "EUR"))      // lambda : exécutée par A
 
 Sans `() ->`, l'exception part avant l'assertion.
 
+## Tests paramétrés
+
+```java
+@ParameterizedTest
+@ValueSource(strings = {"-1", "-0.01"})              // un argument par cas
+void rejectsNegative(String amount) { ... }
+
+@ParameterizedTest
+@CsvSource({"EUR, EURO", "USD, US_DOLLAR"})           // plusieurs arguments ; vide = null, '' = chaîne vide
+void findsByCode(String code, Currency expected) { ... }
+
+@ParameterizedTest
+@EnumSource(Currency.class)                           // une fois par constante
+void roundTrips(Currency currency) { ... }
+
+@ParameterizedTest
+@MethodSource("invalidTexts")                         // équivalent du dataProvider
+void rejectsInvalid(String text) { ... }
+
+static Stream<Arguments> invalidTexts() {
+    return Stream.of(Arguments.of("12.50"), Arguments.of("abc EUR"));
+}
+```
+
+Imports : `org.junit.jupiter.params.ParameterizedTest`, `org.junit.jupiter.params.provider.*Source`.
+
+## Assertions utiles
+
+| Besoin | AssertJ |
+|---|---|
+| même `hashCode` | `assertThat(a).hasSameHashCodeAs(b)` |
+| `toString` | `assertThat(a).hasToString("...")` |
+| type de la cause | `.hasCauseInstanceOf(Foo.class)` |
+| `BigDecimal` par valeur | `assertThat(a).isEqualByComparingTo("12.50")` |
+
 ## Lancer les tests
 
 - tous : `./mvnw test` ;
+- un seul : `./mvnw test -Dtest='PriceTest#parsesText'` (comme `--filter`) ;
 - VSCode : triangle vert dans la marge, ou vue "Testing" (icône de fiole).

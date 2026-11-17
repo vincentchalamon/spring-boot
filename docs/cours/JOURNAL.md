@@ -6,8 +6,8 @@ Claude complète ce journal en fin de session. L'entrée la plus récente est en
 
 ## Reprise
 
-- **Étape en cours** : 1.1 validée. Prochaine étape : 1.2 (enums et records), pas encore rédigée.
-- **Prochaine action** : demander "On attaque la 1.2" ; Claude rédige `etape-1.2.md`. Vérifier avant que la PR #8 est mergée.
+- **Étape en cours** : 1.2 (enums et records), rédigée.
+- **Prochaine action** : cycle A de l'étape 1.2, sous-étape A1 (branche `ch01/02-enums-records`). Valider au passage les listes de `RecipeType` et `Diet` proposées en A2.
 - **Questions en attente** : aucune.
 
 ---

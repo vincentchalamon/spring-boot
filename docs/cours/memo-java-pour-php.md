@@ -2,7 +2,7 @@
 
 Aide-mémoire de syntaxe, complété au fil des chapitres. Chaque section met en regard PHP et Java ; les exemples sont génériques (sans lien avec le code du projet).
 
-Sections : [Fichier et programme](#fichier-et-programme) - [Variables et types](#variables-et-types) - [Chaînes](#chaînes) - [Opérateurs et comparaisons](#opérateurs-et-comparaisons) - [Contrôle de flux](#contrôle-de-flux) - [Tableaux](#tableaux) - [Méthodes](#méthodes) - [Classes et objets](#classes-et-objets) - [Exceptions](#exceptions) - [Égalité et affichage d'un objet](#égalité-et-affichage-dun-objet)
+Sections : [Fichier et programme](#fichier-et-programme) - [Variables et types](#variables-et-types) - [Chaînes](#chaînes) - [Opérateurs et comparaisons](#opérateurs-et-comparaisons) - [Contrôle de flux](#contrôle-de-flux) - [Tableaux](#tableaux) - [Méthodes](#méthodes) - [Classes et objets](#classes-et-objets) - [Exceptions](#exceptions) - [Égalité et affichage d'un objet](#égalité-et-affichage-dun-objet) - [Enums](#enums) - [Records](#records) - [BigDecimal](#bigdecimal) - [Nullité](#nullité)
 
 Référence officielle : [Learn Java (dev.java)](https://dev.java/learn/) et [The Java Tutorials](https://docs.oracle.com/javase/tutorial/).
 
@@ -271,3 +271,84 @@ public String toString() {                  // __toString()
 | `toString` | `City@6379eb` | texte lisible |
 
 À l'étape 1.2, un `record` génère ces trois méthodes.
+
+## Enums
+
+Voir [étape 1.2](chapitre-01/etape-1.2.md), cycle A.
+
+```java
+public enum Currency {
+    EURO("EUR"),                          // constante construite avec un argument
+    US_DOLLAR("USD");                     // ; après la dernière constante
+
+    private final String code;
+
+    Currency(String code) {               // constructeur privé d'office
+        this.code = code;
+    }
+
+    public String code() {
+        return code;
+    }
+}
+```
+
+| PHP 8.1 | Java |
+|---|---|
+| `case Euro;` | `EURO,` |
+| `enum Suit: string` (backed) | un champ + un constructeur |
+| `Suit::cases()` | `Suit.values()` |
+| `Suit::from('H')` | méthode statique écrite à la main (`fromCode`) |
+| `Suit::Hearts->name` | `Suit.HEARTS.name()` |
+| `match` incomplet : erreur à l'exécution | `switch` incomplet : erreur de compilation |
+
+`valueOf("EURO")` cherche par **nom** de constante. Comparer deux constantes : `==`.
+
+## Records
+
+```java
+public record Point(int x, int y) {       // champs private final, constructeur, x(), y(), equals, hashCode, toString
+
+    public Point {                        // constructeur compact : valider, normaliser
+        if (x < 0) {
+            throw new IllegalArgumentException("x négatif : " + x);
+        }
+        y = Math.abs(y);                  // réaffecter le paramètre ; jamais this.y = ...
+    }
+}
+
+Point p = new Point(1, 2);
+int x = p.x();                            // accesseur sans get
+```
+
+PHP le plus proche : `final readonly class Point { public function __construct(public int $x, public int $y) {} }`.
+
+## BigDecimal
+
+| Opération | Java |
+|---|---|
+| créer | `new BigDecimal("0.1")` (jamais depuis un `double`) |
+| `+`, `-`, `*` | `a.add(b)`, `a.subtract(b)`, `a.multiply(b)` |
+| signe | `a.signum()` : `-1`, `0`, `1` |
+| comparer la valeur | `a.compareTo(b) == 0` |
+| `equals` | valeur **et** échelle : `1.0` différent de `1.00` |
+| retirer les zéros | `a.stripTrailingZeros()` (`100` devient `1E+2`) |
+| afficher | `a.toPlainString()` |
+| fixer l'échelle | `a.setScale(2)` |
+
+## Nullité
+
+```java
+@NullMarked                               // package-info.java : rien n'est nul par défaut
+package com.example.shop.price;
+
+import org.jspecify.annotations.NullMarked;
+```
+
+| PHP | Java (JSpecify) |
+|---|---|
+| `string $x` | `String x` dans un package `@NullMarked` |
+| `?string $x` | `@Nullable String x` |
+| vérifié par le moteur | annotations seules : vérifiées par l'outillage (NullAway, chapitre 2) |
+
+À l'exécution : `Objects.requireNonNull(x, "x")` lance `NullPointerException("x")`. Convention : `null` interdit donne `NullPointerException`, valeur invalide donne `IllegalArgumentException`.
