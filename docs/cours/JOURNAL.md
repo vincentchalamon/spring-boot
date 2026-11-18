@@ -6,8 +6,8 @@ Claude complète ce journal en fin de session. L'entrée la plus récente est en
 
 ## Reprise
 
-- **Étape en cours** : 1.2 validée. Prochaine étape : 1.3 (ingrédients, collections et streams), pas encore rédigée.
-- **Prochaine action** : vérifier que la PR #11 est mergée, puis demander "On attaque la 1.3" ; Claude rédige `etape-1.3.md`.
+- **Étape en cours** : 1.3 (ingrédients, collections et streams), rédigée.
+- **Prochaine action** : cycle A de l'étape 1.3, sous-étape A1 (repasser sur `main`, puis branche `ch01/03-ingredients`).
 - **Questions en attente** : aucune.
 
 ---
