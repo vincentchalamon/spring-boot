@@ -11,17 +11,17 @@
 
 Avancement :
 
-- [ ] A1. Créer la branche
-- [ ] A2. Écrire `RecipeType` et `Diet`
-- [ ] A3. Écrire `Unit` avec son symbole
-- [ ] A4. Tester `Unit`
-- [ ] B1. Ajouter JSpecify et déclarer le package non nul
-- [ ] B2. Réécrire `Quantity` en record
-- [ ] B3. Adapter les tests (avec une erreur volontaire)
-- [ ] B4. Inverser le test des `double`
-- [ ] B5. Comparer avec la classe de l'étape 1.1
-- [ ] B6. Committer et ouvrir la PR
-- [ ] Validation en session
+- [x] A1. Créer la branche
+- [x] A2. Écrire `RecipeType` et `Diet`
+- [x] A3. Écrire `Unit` avec son symbole
+- [x] A4. Tester `Unit`
+- [x] B1. Ajouter JSpecify et déclarer le package non nul
+- [x] B2. Réécrire `Quantity` en record
+- [x] B3. Adapter les tests (avec une erreur volontaire)
+- [x] B4. Inverser le test des `double`
+- [x] B5. Comparer avec la classe de l'étape 1.1
+- [x] B6. Committer et ouvrir la PR
+- [x] Validation en session
 
 Astuce : `Ctrl+Shift+O` affiche le plan du document.
 
@@ -292,18 +292,18 @@ Les unités du cahier des charges, chacune avec son **symbole**, celui qu'on éc
 |---|---|---|
 | `GRAM` | `g` | gramme |
 | `MILLILITER` | `ml` | millilitre |
-| `TEASPOON` | `càc` | cuillère à café |
-| `TABLESPOON` | `càs` | cuillère à soupe |
-| `PIECE` | `pièce` | pièce |
-| `PINCH` | `pincée` | pincée |
-| `CLOVE` | `gousse` | gousse |
-| `SPRIG` | `brin` | brin |
-| `BRANCH` | `branche` | branche |
-| `LEAF` | `feuille` | feuille |
-| `SLICE` | `tranche` | tranche |
-| `BUNCH` | `botte` | botte |
+| `TEASPOON` | `tsp` | cuillère à café |
+| `TABLESPOON` | `tbsp` | cuillère à soupe |
+| `PIECE` | `piece` | pièce |
+| `PINCH` | `pinch` | pincée |
+| `CLOVE` | `clove` | gousse |
+| `SPRIG` | `sprig` | brin |
+| `BRANCH` | `branch` | branche |
+| `LEAF` | `leaf` | feuille |
+| `SLICE` | `slice` | tranche |
+| `BUNCH` | `bunch` | botte |
 | `SACHET` | `sachet` | sachet |
-| `JAR` | `pot` | pot |
+| `JAR` | `jar` | pot |
 
 Ce qui change par rapport au modèle : `symbol` au lieu de `code`, `fromSymbol` au lieu de `fromCode`.
 
@@ -481,7 +481,13 @@ Convention Java : un argument `null` interdit lance `NullPointerException` (c'es
 
 #### Exemple 4 : `Price` en record
 
-Ajout au `pom.xml` du projet `shop`, dans `<dependencies>` (pas dans `<dependencyManagement>`) :
+Trois fichiers du projet `shop` changent :
+
+1. `pom.xml` : la dépendance JSpecify ;
+2. `package-info.java` : `@NullMarked` sur le package `com.example.shop.price`, exactement le fichier montré dans la section "Nullité" ;
+3. `Price.java` : le record.
+
+Ajout au `pom.xml`, dans `<dependencies>` (pas dans `<dependencyManagement>`) :
 
 ```xml
         <dependency>
@@ -647,7 +653,7 @@ Notez aussi `rejectsNullAmount` : passer `null` compile, malgré `@NullMarked`. 
 ### Vérifiez votre compréhension
 
 1. Pourquoi `new Price(new BigDecimal("1.5"), ...)` égale-t-il `new Price(new BigDecimal("1.50"), ...)`, alors que les deux `BigDecimal` ne sont pas `equals` ?
-2. Que contient un record `record Point(int x, int y) {}` que vous n'avez pas écrit ?
+2. Que génère Java à partir de `record Point(int x, int y) {}` ?
 3. `new Price(null, Currency.EURO)` compile-t-il dans un package `@NullMarked` ? Pourquoi ?
 
 ---
@@ -799,13 +805,13 @@ En session, Claude :
 
 Points vérifiables :
 
-- [ ] `./mvnw clean verify` passe depuis un clone propre.
-- [ ] `Quantity` est un record, sans `equals` ni `hashCode` écrits à la main.
-- [ ] `1.0` g égale `1.00` g, avec le même `hashCode`.
-- [ ] Valeur nulle ou négative refusée ; `null` refusé avec `NullPointerException`.
-- [ ] `toString` de `100` g affiche `100 g`.
-- [ ] Chaque unité est testée par `@EnumSource`.
-- [ ] Le test des `double` affirme maintenant que `0.1 + 0.2` égale `0.3`.
+- [x] `./mvnw clean verify` passe depuis un clone propre.
+- [x] `Quantity` est un record, sans `equals` ni `hashCode` écrits à la main.
+- [x] `1.0` g égale `1.00` g, avec le même `hashCode`.
+- [x] Valeur nulle ou négative refusée ; `null` refusé avec `NullPointerException`.
+- [x] `toString` de `100` g affiche `100 g`.
+- [x] Chaque unité est testée par `@EnumSource`.
+- [x] Le test des `double` affirme maintenant que `0.1 + 0.2` égale `0.3`.
 
 Questions "expliquez" :
 
