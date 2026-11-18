@@ -3,6 +3,8 @@ package io.github.vincentchalamon.quinoa.recipe;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import java.math.BigDecimal;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -10,20 +12,18 @@ import org.junit.jupiter.params.provider.ValueSource;
 class QuantityTest {
     @Test
     void createsValidQuantity() {
-        Quantity quantity = new Quantity(1.5, "kg");
+        Quantity quantity = new Quantity(new BigDecimal("1.5"), Unit.GRAM);
 
-        assertThat(quantity.getValue()).isEqualTo(1.5);
-        assertThat(quantity.getUnit()).isEqualTo("kg");
+        assertThat(quantity.value()).isEqualTo(new BigDecimal("1.5"));
+        assertThat(quantity.unit()).isEqualTo(Unit.GRAM);
     }
 
     @ParameterizedTest
     @ValueSource(strings = {
-            "0 kg",
+            "0 g",
             "-2 g",
-            "NaN l",
-            "Infinity g",
     })
-    void rejectsIncorrectValue(String input) {
+    void rejectsNonPositiveValue(String input) {
         assertThatThrownBy(() -> Quantity.parse(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("Quantity must be a positive number.");
@@ -31,20 +31,22 @@ class QuantityTest {
 
     @Test
     void rejectsNullUnit() {
-        assertThatThrownBy(() -> new Quantity(2.5, null))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("Unit must not be empty.");
+        assertThatThrownBy(() -> new Quantity(new BigDecimal("2.5"), null))
+                .isInstanceOf(NullPointerException.class)
+                .hasMessage("Unit cannot be null.");
     }
 
-    @ParameterizedTest
-    @ValueSource(strings = {
-            "",
-            " ",
-    })
-    void rejectsInvalidUnit(String unit) {
-        assertThatThrownBy(() -> new Quantity(2.5, unit))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("Unit must not be empty.");
+    @Test
+    void rejectsNullQuantity() {
+        assertThatThrownBy(() -> new Quantity(null, Unit.GRAM))
+                .isInstanceOf(NullPointerException.class)
+                .hasMessage("Value cannot be null.");
+    }
+
+    @Test
+    void rejectsInvalidUnit() {
+        assertThatThrownBy(() -> Quantity.parse("2.5 kg"))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @ParameterizedTest
@@ -55,7 +57,7 @@ class QuantityTest {
             "250  ",
             "250  g",
     })
-    void rejectsInvalidQuantityFormat(String input) {
+    void rejectsInvalidInputFormat(String input) {
         assertThatThrownBy(() -> Quantity.parse(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("Argument is not correctly formatted, expecting: \"<quantity> <unit>\".");
@@ -65,33 +67,35 @@ class QuantityTest {
     @ValueSource(strings = {
             "2,5 g",
             "abc g",
+            "NaN l",
+            "Infinity g",
     })
     void rejectsInvalidQuantityNumber(String input) {
         assertThatThrownBy(() -> Quantity.parse(input))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasCauseInstanceOf(NumberFormatException.class);
+                .isInstanceOf(NumberFormatException.class);
     }
 
     @Test
     void quantitiesWithSameValueAreEqual() {
-        assertThat(Quantity.parse("2.5 g")).isEqualTo(new Quantity(2.5, "g"));
+        assertThat(Quantity.parse("2 g")).isEqualTo(new Quantity(new BigDecimal("2.0"), Unit.GRAM));
     }
 
     @Test
     void quantitiesWithSameValueHaveSameHashCode() {
-        assertThat(Quantity.parse("2.5 g")).hasSameHashCodeAs(new Quantity(2.5, "g"));
+        assertThat(Quantity.parse("2 g")).hasSameHashCodeAs(new Quantity(new BigDecimal("2.0"), Unit.GRAM));
     }
 
     @Test
     void toStringReturnsCorrectFormat() {
-        assertThat(new Quantity(2.5, "g")).hasToString("2.5 g");
+        assertThat(new Quantity(new BigDecimal("100"), Unit.GRAM)).hasToString("100 g");
     }
 
     @Test
-    void doubleArithmeticIsNotExact() {
-        Quantity sum = new Quantity(0.1 + 0.2, "g");
+    void bigDecimalArithmeticIsExact() {
+        Quantity sum = new Quantity(new BigDecimal("0.1"), Unit.GRAM);
+        sum = new Quantity(sum.value().add(new BigDecimal("0.2")), sum.unit());
 
-        assertThat(sum).isNotEqualTo(new Quantity(0.3, "g"));
-        assertThat(sum.getValue()).isEqualTo(0.30000000000000004);
+        assertThat(sum).hasToString("0.3 g");
+        assertThat(sum).isEqualTo(new Quantity(new BigDecimal("0.3"), Unit.GRAM));
     }
 }
