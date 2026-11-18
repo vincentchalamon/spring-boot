@@ -6,7 +6,7 @@
 
 - **Objectif** : manipuler des listes de valeurs à la manière de Java : collections, génériques, streams, valeurs optionnelles.
 - **Apport au projet** : le record `Ingredient` (nom, précision optionnelle, quantité optionnelle) et la règle "pas d'ingrédient en double", écrite avec les streams. La recette s'en servira au chapitre 4.
-- **Durée indicative** : une demi-journée à une journée, en deux cycles. Vous pouvez vous arrêter à chaque "point d'arrêt".
+- **Durée indicative** : une demi-journée (environ 3 h), en deux cycles. Vous pouvez vous arrêter à chaque "point d'arrêt".
 - **Branche** : `ch01/03-ingredients`.
 
 Avancement :

@@ -4,7 +4,7 @@ Construire, étape par étape, l'API REST du gestionnaire de recettes décrit da
 
 - **Public** : développeur Symfony / API Platform expert, débutant en Java.
 - **Rythme** : temps plein, avec des interruptions. Les durées sont des estimations d'effort, pas un calendrier : une étape peut s'étaler sur plusieurs sessions et plusieurs jours.
-- **Durée estimée** : environ 22,5 jours d'effort, plus le bonus.
+- **Durée estimée** : environ 22 jours d'effort, plus le bonus. Repère : une journée d'effort vaut environ 7 h, une étape environ une demi-journée.
 - **Où reprendre** : le [journal](JOURNAL.md), entrée la plus récente en haut.
 - **Détail** : un dossier par chapitre (`chapitre-XX/README.md`) et un fichier par étape (`etape-X.Y.md`), rédigés par Claude au démarrage.
 
@@ -41,7 +41,7 @@ Syntaxe de référence : [mémo Java pour un développeur PHP](memo-java-pour-ph
 
 | Chapitre | Phase | Jours | Statut |
 |---|---|---|---|
-| 0. Environnement et dépôt | guidée | 1 | terminé |
+| 0. Environnement et dépôt | guidée | 0,5 | terminé |
 | 1. Java moderne, sans framework | guidée | 2 | en cours |
 | 2. Qualité et CI | guidée | 1,5 | à faire |
 | Bilan 1. Étapes de recette | bilan | 0,5 | à faire |
@@ -401,3 +401,4 @@ Apport au projet : logs structurés, métriques, image OCI et CI complète.
 | 2026-11-18 | Listes fermées fixées par Vincent : `RecipeType` (`STARTER`, `MAIN_COURSE`, `SIDE_DISH`, `DESSERT`, `BREAKFAST`, `SNACK`, `DRINK`, `SAUCE`) ; `Diet` (`VEGETARIAN`, `VEGAN`, `GLUTEN_FREE`, `LOW_FAT`, `LACTOSE_FREE`) ; symboles de `Unit` en anglais, sensibles à la casse (`g`, `ml`, `tsp`, `tbsp`, `piece`, `pinch`, `clove`, `sprig`, `branch`, `leaf`, `slice`, `bunch`, `sachet`, `jar`). `Quantity.parse` laisse passer la `NumberFormatException` de `BigDecimal` (sous-classe d'`IllegalArgumentException`) ; les messages destinés au client seront traités au chapitre 7. |
 | 2026-11-17 | Notions de l'étape 1.2 recentrées : classes, visibilité, `final` et `static` déjà vus en 1.0 ; les interfaces passent à l'étape 3.2 (injection de dépendances). |
 | 2026-11-18 | Étape 1.3 : composants optionnels d'`Ingredient` en `@Nullable` (pas d'`Optional`, réservé aux types de retour) ; précision vide refusée (`null` = absente) ; règle des doublons en méthode statique `Ingredient.duplicateNames`, insensible à la casse (`Locale.ROOT`), appelée par la recette au chapitre 4. |
+| 2026-11-18 | Durées recalées sur le réel (temps de session, pauses comprises) : 0.1 environ 1 h 20, 0.2 et 0.3 environ 50 min chacune (estimées une demi-journée chacune) ; 1.0 environ 2 h 45, 1.1 environ 3 h 45, 1.2 environ 3 h (estimées une journée chacune). Le chapitre 0 passe de 1 à 0,5 jour ; l'estimation du chapitre 1 (2 jours) tient, seules les étapes étaient surestimées : une étape vaut environ une demi-journée. Chapitres suivants inchangés, à recaler à la fin du chapitre 2. |

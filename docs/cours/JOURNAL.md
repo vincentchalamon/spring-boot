@@ -21,6 +21,7 @@ Claude complète ce journal en fin de session. L'entrée la plus récente est en
 - **Flou** : la normalisation, d'abord vue comme une protection contre les approximations (c'est l'échelle de `BigDecimal.equals` qu'elle traite) ; pourquoi un `catch (IllegalArgumentException)` reçoit une `NumberFormatException` (hiérarchie des exceptions, déjà vue en 1.0).
 - **À consolider** : "Pourquoi" d'une PR (la vraie raison technique) ; titres de PR plus courts.
 - **Cours** : exemple 4 précisé (les trois fichiers, dont `package-info.java`), question 2 du cycle B reformulée, tableau des symboles aligné sur les choix de Vincent.
+- **Durées** : recalées sur le réel à la demande de Vincent (détail dans les décisions du plan) : une étape vaut environ une demi-journée, pas une journée.
 
 ## 2026-11-17 - Étape 1.1 validée
 
