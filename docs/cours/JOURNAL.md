@@ -6,11 +6,21 @@ Claude complète ce journal en fin de session. L'entrée la plus récente est en
 
 ## Reprise
 
-- **Étape en cours** : 1.2 (enums et records), rédigée.
-- **Prochaine action** : cycle A de l'étape 1.2, sous-étape A1 (branche `ch01/02-enums-records`). Valider au passage les listes de `RecipeType` et `Diet` proposées en A2.
+- **Étape en cours** : 1.2 validée. Prochaine étape : 1.3 (ingrédients, collections et streams), pas encore rédigée.
+- **Prochaine action** : vérifier que la PR #11 est mergée, puis demander "On attaque la 1.3" ; Claude rédige `etape-1.3.md`.
 - **Questions en attente** : aucune.
 
 ---
+
+## 2026-11-18 - Étape 1.2 validée
+
+- **Fait** : enums `RecipeType`, `Diet`, `Unit` (symbole + `fromSymbol`, sensible à la casse) et `UnitTest` (`@CsvSource`, `@EnumSource`) ; JSpecify 1.0.1 et `package-info.java` `@NullMarked` ; `Quantity` en record (`BigDecimal` normalisé par `stripTrailingZeros`, `Unit`, `requireNonNull` avec message), `parse` simplifié ; 41 tests. PR #11.
+- **Initiatives** : suppression du `try` / `catch` de `parse` (proposée par Vincent, `NumberFormatException` étant une `IllegalArgumentException`) ; réglage `java.completion.favoriteStaticMembers` pour AssertJ.
+- **Corrigé en revue** : `Unit` avec kg, l, cup, oz, lb (contraire au cahier des charges) ; `equalsIgnoreCase` non testé ; `@CsvSource` recopiant toute l'énumération ; `equals` / `hashCode` réécrits dans le record ; égalité `1.0` / `1.00` non testée ; test d'arithmétique portant sur `BigDecimal` au lieu de `Quantity` ; visibilité incohérente ; noms de tests (`ignoresSymbolCase` qui vérifiait l'inverse, `symfonyRoundTrips`) ; titre et "Quoi" de PR incomplets.
+- **Appris** : enums Java (champ, constructeur privé, `values`, `valueOf` par nom, `switch` expression exhaustif) ; conversion implicite de JUnit (texte vers enum, `BigDecimal`) ; records (accesseurs sans `get`, constructeur compact, immuabilité superficielle, record et Value Object) ; `BigDecimal` (construction depuis `String`, `equals` et échelle, `compareTo`, `stripTrailingZeros`, `toPlainString`, `signum`) ; JSpecify (`@NullMarked` par défaut non nul, `@Nullable`, contrat vérifié par l'outillage et non par `javac`) ; visibilités (`protected` élargi au package) ; `Shift+Alt+O`.
+- **Flou** : la normalisation, d'abord vue comme une protection contre les approximations (c'est l'échelle de `BigDecimal.equals` qu'elle traite) ; pourquoi un `catch (IllegalArgumentException)` reçoit une `NumberFormatException` (hiérarchie des exceptions, déjà vue en 1.0).
+- **À consolider** : "Pourquoi" d'une PR (la vraie raison technique) ; titres de PR plus courts.
+- **Cours** : exemple 4 précisé (les trois fichiers, dont `package-info.java`), question 2 du cycle B reformulée, tableau des symboles aligné sur les choix de Vincent.
 
 ## 2026-11-17 - Étape 1.1 validée
 
