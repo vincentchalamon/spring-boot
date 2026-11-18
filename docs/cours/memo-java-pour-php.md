@@ -2,7 +2,7 @@
 
 Aide-mémoire de syntaxe, complété au fil des chapitres. Chaque section met en regard PHP et Java ; les exemples sont génériques (sans lien avec le code du projet).
 
-Sections : [Fichier et programme](#fichier-et-programme) - [Variables et types](#variables-et-types) - [Chaînes](#chaînes) - [Opérateurs et comparaisons](#opérateurs-et-comparaisons) - [Contrôle de flux](#contrôle-de-flux) - [Tableaux](#tableaux) - [Méthodes](#méthodes) - [Classes et objets](#classes-et-objets) - [Exceptions](#exceptions) - [Égalité et affichage d'un objet](#égalité-et-affichage-dun-objet) - [Enums](#enums) - [Records](#records) - [BigDecimal](#bigdecimal) - [Nullité](#nullité)
+Sections : [Fichier et programme](#fichier-et-programme) - [Variables et types](#variables-et-types) - [Chaînes](#chaînes) - [Opérateurs et comparaisons](#opérateurs-et-comparaisons) - [Contrôle de flux](#contrôle-de-flux) - [Tableaux](#tableaux) - [Méthodes](#méthodes) - [Classes et objets](#classes-et-objets) - [Exceptions](#exceptions) - [Égalité et affichage d'un objet](#égalité-et-affichage-dun-objet) - [Enums](#enums) - [Records](#records) - [BigDecimal](#bigdecimal) - [Nullité](#nullité) - [Collections](#collections) - [Streams](#streams)
 
 Référence officielle : [Learn Java (dev.java)](https://dev.java/learn/) et [The Java Tutorials](https://docs.oracle.com/javase/tutorial/).
 
@@ -352,3 +352,60 @@ import org.jspecify.annotations.NullMarked;
 | vérifié par le moteur | annotations seules : vérifiées par l'outillage (NullAway, chapitre 2) |
 
 À l'exécution : `Objects.requireNonNull(x, "x")` lance `NullPointerException("x")`. Convention : `null` interdit donne `NullPointerException`, valeur invalide donne `IllegalArgumentException`.
+
+## Collections
+
+Voir [étape 1.3](chapitre-01/etape-1.3.md), cycle A.
+
+| PHP | Java | Implémentation courante |
+|---|---|---|
+| `['a', 'b']` | `List<String>` | `ArrayList` |
+| `['a' => 1]` | `Map<String, Integer>` | `HashMap` |
+| `array_unique(...)` | `Set<String>` | `HashSet` |
+
+| Création | Modifiable ? |
+|---|---|
+| `List.of("a", "b")` | non, et refuse `null` : le choix par défaut |
+| `List.copyOf(other)` | non : copie défensive |
+| `new ArrayList<>(other)` | oui |
+| `Arrays.asList("a", "b")` | taille fixe : à éviter |
+
+```java
+List<String> names = new ArrayList<>();   // déclarer avec l'interface, diamant <>
+var stock = new HashMap<String, Integer>(); // var : variables locales seulement, type fixé
+stock.getOrDefault("café", 0);           // get sur une clé absente : null
+```
+
+Valeur optionnelle : `@Nullable` pour un champ, un composant ou un paramètre ; `Optional<T>` seulement comme type de retour.
+
+## Streams
+
+```java
+List<String> result = words.stream()
+        .filter(w -> w.startsWith("p"))     // array_filter ; lambda = fn($w) => ...
+        .map(String::toUpperCase)           // array_map ; référence de méthode
+        .toList();                          // opération terminale, liste non modifiable
+
+Map<String, Long> counts = words.stream()
+        .collect(Collectors.groupingBy(w -> w.toLowerCase(Locale.ROOT), Collectors.counting()));
+
+Set<String> duplicates = counts.entrySet().stream()
+        .filter(e -> e.getValue() > 1)
+        .map(Map.Entry::getKey)
+        .collect(Collectors.toSet());
+
+String first = words.stream().findFirst().orElse("aucun");  // Optional, orElse = ??
+```
+
+- Rien n'est calculé sans opération terminale (`toList`, `collect`, `findFirst`, `count`).
+- Un stream ne sert qu'une fois.
+- `toLowerCase(Locale.ROOT)` pour comparer des textes destinés à la machine.
+
+Text block (heredoc) :
+
+```java
+String menu = """
+    Entrée
+    Dessert
+    """;
+```

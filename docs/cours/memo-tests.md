@@ -86,6 +86,11 @@ Imports : `org.junit.jupiter.params.ParameterizedTest`, `org.junit.jupiter.param
 | `toString` | `assertThat(a).hasToString("...")` |
 | type de la cause | `.hasCauseInstanceOf(Foo.class)` |
 | `BigDecimal` par valeur | `assertThat(a).isEqualByComparingTo("12.50")` |
+| liste : contenu et ordre | `assertThat(list).containsExactly("a", "b")` |
+| ensemble : contenu sans ordre | `assertThat(set).containsExactlyInAnyOrder("a", "b")` |
+| vide | `assertThat(list).isEmpty()` |
+
+Données partagées entre tests : une constante `private static final List<...> CATALOG = List.of(...)`.
 
 ## Lancer les tests
 

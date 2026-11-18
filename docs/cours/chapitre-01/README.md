@@ -25,7 +25,7 @@ Comparer les versions successives fait partie de l'apprentissage : gardez votre 
 1. [Étape 1.0 - Syntaxe de base](etape-1.0.md)
 2. [Étape 1.1 - Projet Maven à la main](etape-1.1.md)
 3. [Étape 1.2 - Enums et records](etape-1.2.md)
-4. Étape 1.3 - Ingrédients, collections et streams (rédigée au démarrage de l'étape)
+4. [Étape 1.3 - Ingrédients, collections et streams](etape-1.3.md)
 
 ## Mémo
 
