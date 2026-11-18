@@ -263,7 +263,7 @@ Apport au projet : création, modification et suppression des recettes, avec val
 
 - [ ] **7.1 Création**
   - Objectif : `POST /recipes`.
-  - Notions : DTO de requête (record) distinct du DTO de réponse, Bean Validation (`@NotBlank`, `@Positive`, `@Size`, `@Valid` imbriqué), réponse `201 Created` + `Location`, erreurs 400 détaillées par champ en `ProblemDetail` (équivalent des violations du Validator Symfony).
+  - Notions : DTO de requête (record) distinct du DTO de réponse, Bean Validation (`@NotBlank`, `@Positive`, `@Size`, `@Valid` imbriqué), réponse `201 Created` + `Location`, erreurs 400 détaillées par champ en `ProblemDetail` (équivalent des violations du Validator Symfony) ; messages d'erreur traduits selon `Accept-Language` (`MessageSource`, `messages_fr.properties`, équivalent du composant Translation de Symfony).
   - Livrable : création d'une recette complète.
   - Validation : tests des cas valides et invalides.
 
@@ -402,3 +402,4 @@ Apport au projet : logs structurés, métriques, image OCI et CI complète.
 | 2026-11-17 | Notions de l'étape 1.2 recentrées : classes, visibilité, `final` et `static` déjà vus en 1.0 ; les interfaces passent à l'étape 3.2 (injection de dépendances). |
 | 2026-11-18 | Étape 1.3 : composants optionnels d'`Ingredient` en `@Nullable` (pas d'`Optional`, réservé aux types de retour) ; précision vide refusée (`null` = absente) ; règle des doublons en méthode statique `Ingredient.duplicateNames`, insensible à la casse (`Locale.ROOT`), appelée par la recette au chapitre 4. |
 | 2026-11-18 | Durées recalées sur le réel (temps de session, pauses comprises) : 0.1 environ 1 h 20, 0.2 et 0.3 environ 50 min chacune (estimées une demi-journée chacune) ; 1.0 environ 2 h 45, 1.1 environ 3 h 45, 1.2 environ 3 h (estimées une journée chacune). Le chapitre 0 passe de 1 à 0,5 jour ; l'estimation du chapitre 1 (2 jours) tient, seules les étapes étaient surestimées : une étape vaut environ une demi-journée. Chapitres suivants inchangés, à recaler à la fin du chapitre 2. |
+| 2026-11-18 | Traduction des messages de l'API (erreurs de validation selon `Accept-Language`) ajoutée à l'étape 7.1. Traduction du contenu des recettes : en attente, à décider en fin de projet. |
