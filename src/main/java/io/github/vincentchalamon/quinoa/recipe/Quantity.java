@@ -9,7 +9,7 @@ record Quantity(BigDecimal value, Unit unit) {
         Objects.requireNonNull(unit, "Unit cannot be null.");
 
         if (value.signum() <= 0) {
-            throw new IllegalArgumentException("Quantity must be a positive number.");
+            throw new IllegalArgumentException("Quantity must be a positive number, got \"%s\".".formatted(value));
         }
 
         value = value.stripTrailingZeros();
@@ -19,7 +19,8 @@ record Quantity(BigDecimal value, Unit unit) {
         String[] parts = input.split(" ");
         if (parts.length != 2) {
             throw new IllegalArgumentException(
-                    "Argument is not correctly formatted, expecting: \"<quantity> <unit>\".");
+                    "Argument is not correctly formatted, expecting: \"<quantity> <unit>\", got \"%s\"."
+                            .formatted(input));
         }
 
         return new Quantity(new BigDecimal(parts[0]), Unit.fromSymbol(parts[1]));
