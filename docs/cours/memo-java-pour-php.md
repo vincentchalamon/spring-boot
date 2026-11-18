@@ -363,12 +363,31 @@ Voir [étape 1.3](chapitre-01/etape-1.3.md), cycle A.
 | `['a' => 1]` | `Map<String, Integer>` | `HashMap` |
 | `array_unique(...)` | `Set<String>` | `HashSet` |
 
+Panorama, par interface (`java.util`) :
+
+| Interface | Implémentation | Particularité |
+|---|---|---|
+| `List` | `ArrayList` | ordonnée, indexée : le choix par défaut |
+| `Set` | `HashSet` | sans ordre garanti |
+| `Set` | `LinkedHashSet` | garde l'ordre d'insertion |
+| `Set` | `TreeSet` | trié (ordre naturel ou `Comparator`) |
+| `Set` | `EnumSet` | pour des constantes d'enum, très compact |
+| `Map` | `HashMap` | sans ordre garanti |
+| `Map` | `LinkedHashMap` | garde l'ordre d'insertion |
+| `Map` | `TreeMap` | trié par clé |
+| `Map` | `EnumMap` | clés d'enum |
+| `Deque` | `ArrayDeque` | pile ou file (rare dans une API) |
+
+`Map` n'est pas une `Collection` : elle se parcourt par `keySet()`, `values()` ou `entrySet()`. `Arrays` et `Collections` ne sont pas des collections, mais des classes utilitaires (`Arrays.asList`, `Collections.sort`...).
+
 | Création | Modifiable ? |
 |---|---|
 | `List.of("a", "b")` | non, et refuse `null` : le choix par défaut |
 | `List.copyOf(other)` | non : copie défensive |
 | `new ArrayList<>(other)` | oui |
 | `Arrays.asList("a", "b")` | taille fixe : à éviter |
+| `Set.of(...)`, `Map.of(...)` | non ; refusent `null` et les doublons |
+| `new HashSet<>(other)`, `new HashMap<>(other)` | oui |
 
 ```java
 List<String> names = new ArrayList<>();   // déclarer avec l'interface, diamant <>
