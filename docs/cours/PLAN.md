@@ -43,7 +43,7 @@ Syntaxe de référence : [mémo Java pour un développeur PHP](memo-java-pour-ph
 |---|---|---|---|
 | 0. Environnement et dépôt | guidée | 0,5 | terminé |
 | 1. Java moderne, sans framework | guidée | 2 | terminé |
-| 2. Qualité et CI | guidée | 1,5 | à faire |
+| 2. Qualité et CI | guidée | 1,5 | en cours |
 | Bilan 1. Étapes de recette | bilan | 0,5 | à faire |
 | 3. Fondamentaux Spring Boot | semi-guidée | 2 | à faire |
 | 4. Persistance | semi-guidée | 2,5 | à faire |
@@ -115,12 +115,12 @@ Fil rouge `Quantity` : la même valeur est réécrite à chaque étape avec un m
 
 ## Chapitre 2 - Qualité et CI
 
-Apport au projet : formatage, analyse statique, couverture, tests de mutation, CI et revue automatique sur chaque PR.
+Apport au projet : formatage, analyse statique, couverture, tests de mutation, CI et revue automatique sur chaque PR. Détail : [chapitre-02](chapitre-02/README.md).
 
 - [ ] **2.1 Formatage et analyse statique**
   - Objectif : faire porter le style et les erreurs courantes par l'outillage.
-  - Notions : Spotless + google-java-format ou palantir-java-format (équivalent de PHP-CS-Fixer) ; Error Prone, avec NullAway en option (équivalent de PHPStan) ; Maven Enforcer (version de Java et de Maven) ; plugins Maven et phases.
-  - Livrable : configuration dans le `pom.xml` ; `./mvnw verify` échoue sur un code mal formaté ou une erreur détectée.
+  - Notions : plugins Maven, goals, executions et phases ; Maven Enforcer (version de Java et de Maven, intervalles de versions) ; Spotless + palantir-java-format (équivalent de PHP-CS-Fixer) ; Error Prone et NullAway (équivalent de PHPStan, vérification du contrat JSpecify), `failOnWarning`, `@SuppressWarnings` ciblé.
+  - Livrable : configuration dans le `pom.xml` et `.mvn/jvm.config` ; projet reformaté ; avertissement `StringSplitter` de `Quantity.parse` traité ; `./mvnw verify` échoue sur un code mal formaté ou une erreur détectée.
   - Validation : démonstration d'un échec puis d'un succès.
 
 - [ ] **2.2 Couverture et tests de mutation**
@@ -402,4 +402,5 @@ Apport au projet : logs structurés, métriques, image OCI et CI complète.
 | 2026-11-17 | Notions de l'étape 1.2 recentrées : classes, visibilité, `final` et `static` déjà vus en 1.0 ; les interfaces passent à l'étape 3.2 (injection de dépendances). |
 | 2026-11-18 | Étape 1.3 : composants optionnels d'`Ingredient` en `@Nullable` (pas d'`Optional`, réservé aux types de retour) ; précision vide refusée (`null` = absente) ; règle des doublons en méthode statique `Ingredient.duplicateNames`, insensible à la casse (`Locale.ROOT`), appelée par la recette au chapitre 4. |
 | 2026-11-18 | Durées recalées sur le réel (temps de session, pauses comprises) : 0.1 environ 1 h 20, 0.2 et 0.3 environ 50 min chacune (estimées une demi-journée chacune) ; 1.0 environ 2 h 45, 1.1 environ 3 h 45, 1.2 environ 3 h (estimées une journée chacune). Le chapitre 0 passe de 1 à 0,5 jour ; l'estimation du chapitre 1 (2 jours) tient, seules les étapes étaient surestimées : une étape vaut environ une demi-journée. Chapitres suivants inchangés, à recaler à la fin du chapitre 2. |
+| 2026-11-23 | Étape 2.1 : palantir-java-format (4 espaces comme `.editorconfig`, adapté aux streams) plutôt que google-java-format ; formatage à l'enregistrement de VSCode désactivé pour Java, `./mvnw spotless:apply` avant commit, `spotless:check` dans `verify`. NullAway inclus (et non optionnel) en `ERROR`, mode `OnlyNullMarked` ; tests qui passent `null` exprès annotés `@SuppressWarnings("NullAway")` méthode par méthode. Avertissements de compilation traités comme des erreurs (`failOnWarning`). |
 | 2026-11-18 | Traduction des messages de l'API (erreurs de validation selon `Accept-Language`) ajoutée à l'étape 7.1. Traduction du contenu des recettes : en attente, à décider en fin de projet. |
