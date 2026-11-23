@@ -7,5 +7,6 @@
   },
   "java.configuration.updateBuildConfiguration": "automatic",
   "files.insertFinalNewline": true,
-  "java.format.comments.enabled": false
+  "java.format.comments.enabled": false,
+  "java.compile.nullAnalysis.mode": "automatic"
 }
