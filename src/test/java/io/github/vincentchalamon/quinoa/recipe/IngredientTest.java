@@ -3,9 +3,15 @@ package io.github.vincentchalamon.quinoa.recipe;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Stream;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.MethodSource;
 
 class IngredientTest {
     @Test
@@ -61,5 +67,49 @@ class IngredientTest {
         Ingredient ingredient = new Ingredient(name, precision, quantity);
 
         assertThat(ingredient.toString()).isEqualTo(expected);
+    }
+
+    @MethodSource("duplicateNamesCases")
+    @ParameterizedTest
+    void duplicateNamesReturnsExpectedSet(List<Ingredient> ingredients, Set<String> expected) {
+        assertThat(Ingredient.duplicateNames(ingredients))
+                .isEqualTo(expected);
+    }
+
+    static Stream<Arguments> duplicateNamesCases() {
+        return Stream.of(
+                // No duplicate
+                Arguments.of(List.of(
+                        new Ingredient("farine", null, null),
+                        new Ingredient("Sucre", null, null),
+                        new Ingredient("beurre", null, null)), Set.of()),
+
+                // Same case duplicates
+                Arguments.of(List.of(
+                        new Ingredient("sucre", null, null),
+                        new Ingredient("Farine", null, null),
+                        new Ingredient("beurre", null, null),
+                        new Ingredient("sucre", null, null),
+                        new Ingredient("Farine", null, null)), Set.of("farine", "sucre")),
+
+                // Different case duplicates
+                Arguments.of(List.of(
+                        new Ingredient("farine", null, null),
+                        new Ingredient("sucre", null, null),
+                        new Ingredient("Farine", null, null),
+                        new Ingredient("beurre", null, null),
+                        new Ingredient("Sucre", null, null)), Set.of("farine", "sucre")),
+
+                // Multiple duplicates
+                Arguments.of(List.of(
+                        new Ingredient("Farine", null, null),
+                        new Ingredient("Sucre", null, null),
+                        new Ingredient("Farine", null, null),
+                        new Ingredient("beurre", null, null),
+                        new Ingredient("Sucre", null, null),
+                        new Ingredient("Farine", null, null)), Set.of("farine", "sucre")),
+
+                // Empty list
+                Arguments.of(List.of(), Set.of()));
     }
 }
