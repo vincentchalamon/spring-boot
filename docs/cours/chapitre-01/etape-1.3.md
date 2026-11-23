@@ -11,14 +11,14 @@
 
 Avancement :
 
-- [ ] A1. Créer la branche
-- [ ] A2. Prédire dans jshell
-- [ ] A3. Écrire le record `Ingredient`
-- [ ] A4. Tester `Ingredient`
-- [ ] B1. Écrire `duplicateNames` avec les streams
-- [ ] B2. Tester la règle (avec une erreur volontaire)
-- [ ] B3. Committer et ouvrir la PR
-- [ ] Validation en session
+- [x] A1. Créer la branche
+- [x] A2. Prédire dans jshell
+- [x] A3. Écrire le record `Ingredient`
+- [x] A4. Tester `Ingredient`
+- [x] B1. Écrire `duplicateNames` avec les streams
+- [x] B2. Tester la règle (avec une erreur volontaire)
+- [x] B3. Committer et ouvrir la PR
+- [x] Validation en session
 
 Astuce : `Ctrl+Shift+O` affiche le plan du document.
 
@@ -665,11 +665,11 @@ En session, Claude :
 
 Points vérifiables :
 
-- [ ] `./mvnw clean verify` passe depuis un clone propre.
-- [ ] `Ingredient` accepte une précision et une quantité absentes, refuse un nom ou une précision vides.
-- [ ] `toString` couvre les quatre cas.
-- [ ] `duplicateNames` est écrite avec les streams et ignore la casse avec `Locale.ROOT`.
-- [ ] Les tests des doublons ne dépendent pas de l'ordre d'un `Set`.
+- [x] `./mvnw clean verify` passe depuis un clone propre.
+- [x] `Ingredient` accepte une précision et une quantité absentes, refuse un nom ou une précision vides.
+- [x] `toString` couvre les quatre cas.
+- [x] `duplicateNames` est écrite avec les streams et ignore la casse avec `Locale.ROOT`.
+- [x] Les tests des doublons ne dépendent pas de l'ordre d'un `Set`.
 
 Questions "expliquez" :
 

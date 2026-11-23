@@ -42,7 +42,7 @@ Syntaxe de référence : [mémo Java pour un développeur PHP](memo-java-pour-ph
 | Chapitre | Phase | Jours | Statut |
 |---|---|---|---|
 | 0. Environnement et dépôt | guidée | 0,5 | terminé |
-| 1. Java moderne, sans framework | guidée | 2 | en cours |
+| 1. Java moderne, sans framework | guidée | 2 | terminé |
 | 2. Qualité et CI | guidée | 1,5 | à faire |
 | Bilan 1. Étapes de recette | bilan | 0,5 | à faire |
 | 3. Fondamentaux Spring Boot | semi-guidée | 2 | à faire |
@@ -107,7 +107,7 @@ Fil rouge `Quantity` : la même valeur est réécrite à chaque étape avec un m
   - Livrable : enums `RecipeType` et `Diet` ; enum `Unit` (`GRAM`, `MILLILITER`, `TEASPOON`, `TABLESPOON` et unités non convertibles : pièce, pincée, etc.) ; `Quantity` réécrite en record (`BigDecimal` + `Unit`, invariants validés), en comparant avec la classe de l'étape 1.0.
   - Validation : tests unitaires des invariants (valeur nulle ou négative refusée, égalité de `1.0` et `1.00`).
 
-- [ ] **1.3 Ingrédients, collections et streams**
+- [x] **1.3 Ingrédients, collections et streams**
   - Objectif : manipuler des listes de valeurs à la manière idiomatique de Java.
   - Notions : `List`, `Map`, `Set`, `List.of` / `List.copyOf` (immutabilité, copie défensive), génériques, Streams API (`map`, `filter`, `toList`, `Collectors.groupingBy`), `Optional` (quand l'utiliser, quand l'éviter), `var`, text blocks ; quantité optionnelle ("sel, poivre").
   - Livrable : record `Ingredient` (nom + précision optionnelle + quantité optionnelle) ; une règle de validation écrite avec les streams (ingrédient en double dans une liste).
