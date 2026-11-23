@@ -7,6 +7,7 @@ import java.math.BigDecimal;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 class QuantityTest {
@@ -19,14 +20,15 @@ class QuantityTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {
-            "0 g",
-            "-2 g",
+    @CsvSource({
+            "0 g, 0",
+            "-2 g, -2",
     })
-    void rejectsNonPositiveValue(String input) {
+    void rejectsNonPositiveValue(String input, String expectedValue) {
         assertThatThrownBy(() -> Quantity.parse(input))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("Quantity must be a positive number.");
+                .hasMessage("Quantity must be a positive number, got \"%s\"."
+                        .formatted(expectedValue));
     }
 
     @Test
@@ -60,7 +62,8 @@ class QuantityTest {
     void rejectsInvalidInputFormat(String input) {
         assertThatThrownBy(() -> Quantity.parse(input))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("Argument is not correctly formatted, expecting: \"<quantity> <unit>\".");
+                .hasMessage("Argument is not correctly formatted, expecting: \"<quantity> <unit>\", got \"%s\"."
+                        .formatted(input));
     }
 
     @ParameterizedTest
