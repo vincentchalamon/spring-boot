@@ -6,11 +6,21 @@ Claude complète ce journal en fin de session. L'entrée la plus récente est en
 
 ## Reprise
 
-- **Étape en cours** : 1.3 (ingrédients, collections et streams), rédigée.
-- **Prochaine action** : cycle A de l'étape 1.3, sous-étape A1 (repasser sur `main`, puis branche `ch01/03-ingredients`).
+- **Étape en cours** : chapitre 1 terminé. Prochaine étape : 2.1 (formatage et analyse statique), pas encore rédigée.
+- **Prochaine action** : `git switch main && git pull`, puis demander "On attaque le chapitre 2" ; Claude rédige `chapitre-02/README.md` et `etape-2.1.md`.
 - **Questions en attente** : traduction du contenu des recettes (plusieurs langues par recette), à décider en fin de projet.
 
 ---
+
+## 2026-11-23 - Étape 1.3 validée, chapitre 1 terminé
+
+- **Fait** : record `Ingredient` (nom, précision et quantité `@Nullable`, `strip`, `toString` à quatre cas) et ses tests (`@CsvSource` avec `nullValues` et apostrophes) ; règle `Ingredient.duplicateNames` (streams, `groupingBy` + `counting`, `Function.identity()`, `Locale.ROOT`) testée par `@MethodSource` ; messages de `Quantity` avec la valeur refusée ; VSCode : commentaires non reformatés, analyse de nullité automatique. PR #17. Cycle A le 2026-11-18, cycle B le 2026-11-23 après quelques jours de pause.
+- **Initiatives** : messages d'erreur de `Quantity` enrichis ; commits séparés par sujet ; `java.compile.nullAnalysis.mode` pour exploiter JSpecify dans l'IDE.
+- **Corrigé en revue** : tests de `strip()` inopérants (`@CsvSource` retire les espaces) ; "vide" testé seulement avec `""` ; message attendu recalculé dans `QuantityTest` ; `duplicateNames` d'abord non compilable (référence de méthode avec argument, `filter` sur une `Map`, `Set` d'entrées) ; trois règles dans un seul cas de test ; source `@MethodSource` homonyme de la méthode testée.
+- **Appris** : `List` / `Set` / `Map` et leurs implémentations, `List.of` / `Arrays.asList` / `ArrayList` / `List.copyOf` (copie superficielle, éléments partagés), génériques, `var`, `int` / `long` et suffixe `L`, `Integer` différent de `Long` pour `equals`, `@Nullable` contre `Optional` (rôle de la valeur), streams paresseux et à usage unique (comparaison avec un générateur PHP), lambdas et références de méthode, `groupingBy`, `entrySet()`, `Locale.ROOT` ("langue machine" ; la locale porte sur les opérations, pas sur les chaînes), text blocks (marge fixée par le `"""` fermant), `@MethodSource` pour des listes, `Set.of` refuse les doublons, `Alt+Haut/Bas`, `Alt+Z`, zoom VSCode.
+- **Flou** : la `Map` de `groupingBy` (clé = valeur calculée, pas l'élément), revenue trois fois avant d'être acquise en validation.
+- **À consolider** : titre et "Quoi" des PR couvrant tous les commits (relire `git log origin/main..HEAD` avant d'ouvrir la PR) ; "Pourquoi" fidèle à l'usage réel ; commande de test vérifiée avant de la publier.
+- **Décisions** : traduction des messages de l'API ajoutée à l'étape 7.1, traduction du contenu en attente (PR #16) ; durées recalées (PR #14) ; panorama des collections dans le mémo (PR #15).
 
 ## 2026-11-18 - Étape 1.2 validée
 
