@@ -6,11 +6,17 @@ Claude complète ce journal en fin de session. L'entrée la plus récente est en
 
 ## Reprise
 
-- **Étape en cours** : chapitre 1 terminé. Prochaine étape : 2.1 (formatage et analyse statique), pas encore rédigée.
-- **Prochaine action** : `git switch main && git pull`, puis demander "On attaque le chapitre 2" ; Claude rédige `chapitre-02/README.md` et `etape-2.1.md`.
+- **Étape en cours** : 2.1 (formatage et analyse statique), rédigée, pas commencée.
+- **Prochaine action** : lire la théorie du cycle A de [l'étape 2.1](chapitre-02/etape-2.1.md), puis A1 (branche `ch02/01-quality` depuis `main` à jour).
 - **Questions en attente** : traduction du contenu des recettes (plusieurs langues par recette), à décider en fin de projet.
 
 ---
+
+## 2026-11-23 - Préparation de l'étape 2.1
+
+- **Cours** : `chapitre-02/README.md`, `etape-2.1.md`, section "Plugins et phases" du mémo Maven. Exemples exécutés sur le projet `shop` (Spotless 3.12.0, palantir-java-format 2.103.0, Error Prone 2.53.0, NullAway 0.14.4, Enforcer 3.7.0).
+- **Constaté sur une copie du projet** : palantir reformate 5 fichiers ; NullAway signale 3 tests qui passent `null` exprès ; Error Prone signale `StringSplitter` dans `Quantity.parse` (exercice B4).
+- **Décisions** : voir le plan (palantir, NullAway inclus, `failOnWarning`).
 
 ## 2026-11-23 - Étape 1.3 validée, chapitre 1 terminé
 
