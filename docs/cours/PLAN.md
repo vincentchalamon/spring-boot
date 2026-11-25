@@ -125,8 +125,8 @@ Apport au projet : formatage, analyse statique, couverture, tests de mutation, C
 
 - [ ] **2.2 Couverture et tests de mutation**
   - Objectif : mesurer la qualité des tests, pas seulement leur présence.
-  - Notions : JaCoCo (rapport, seuil minimal) ; PIT (équivalent d'Infection) : mutants tués ou survivants, score de mutation ; Surefire vs Failsafe (tests unitaires vs tests d'intégration).
-  - Livrable : rapport JaCoCo avec seuil ; PIT exécutable (`./mvnw ... pitest:mutationCoverage`) sur la bibliothèque de quantités.
+  - Notions : JaCoCo (agent, `argLine`, lignes et branches, rapport, seuil minimal) ; PIT (équivalent d'Infection) : mutants tués ou survivants, score de mutation, test strength, groupes de mutateurs ; Surefire vs Failsafe (tests unitaires vs tests d'intégration, théorie seulement).
+  - Livrable : rapport JaCoCo avec seuil ; PIT dans `verify` avec seuil (mutateurs `STRONGER`) ; cas de test ajoutés à `Quantity.parse` pour tuer les survivants.
   - Validation : score de mutation analysé ; au moins un test ajouté pour tuer un mutant survivant.
 
 - [ ] **2.3 CI GitHub Actions et Dependabot**
@@ -403,4 +403,5 @@ Apport au projet : logs structurés, métriques, image OCI et CI complète.
 | 2026-11-18 | Étape 1.3 : composants optionnels d'`Ingredient` en `@Nullable` (pas d'`Optional`, réservé aux types de retour) ; précision vide refusée (`null` = absente) ; règle des doublons en méthode statique `Ingredient.duplicateNames`, insensible à la casse (`Locale.ROOT`), appelée par la recette au chapitre 4. |
 | 2026-11-18 | Durées recalées sur le réel (temps de session, pauses comprises) : 0.1 environ 1 h 20, 0.2 et 0.3 environ 50 min chacune (estimées une demi-journée chacune) ; 1.0 environ 2 h 45, 1.1 environ 3 h 45, 1.2 environ 3 h (estimées une journée chacune). Le chapitre 0 passe de 1 à 0,5 jour ; l'estimation du chapitre 1 (2 jours) tient, seules les étapes étaient surestimées : une étape vaut environ une demi-journée. Chapitres suivants inchangés, à recaler à la fin du chapitre 2. |
 | 2026-11-23 | Étape 2.1 : palantir-java-format (4 espaces comme `.editorconfig`, adapté aux streams) plutôt que google-java-format ; formatage à l'enregistrement de VSCode désactivé pour Java, `./mvnw spotless:apply` avant commit, `spotless:check` dans `verify`. NullAway inclus (et non optionnel) en `ERROR`, mode `OnlyNullMarked` ; tests qui passent `null` exprès annotés `@SuppressWarnings("NullAway")` méthode par méthode. Avertissements de compilation traités comme des erreurs (`failOnWarning`). |
+| 2026-11-25 | Étape 2.2 : PIT avec le groupe de mutateurs `STRONGER` (`DEFAULTS` tue 100 % des mutants du projet sans rien révéler, `ALL` produit des mutants équivalents) ; PIT dans `verify` avec un seuil, `-DskipPitest` pour un build local rapide ; restriction aux tests unitaires à prévoir quand les tests Spring arriveront. Seuils JaCoCo et PIT fixés par Vincent comme planchers. Failsafe vu en théorie seulement, configuré au premier test `*IT` (chapitre 4). |
 | 2026-11-18 | Traduction des messages de l'API (erreurs de validation selon `Accept-Language`) ajoutée à l'étape 7.1. Traduction du contenu des recettes : en attente, à décider en fin de projet. |

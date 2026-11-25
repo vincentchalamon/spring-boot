@@ -21,7 +21,7 @@ Une seule commande, la même en local et en CI. Chaque étape lui ajoute une vé
 ## Étapes
 
 1. [Étape 2.1 - Formatage et analyse statique](etape-2.1.md)
-2. Étape 2.2 - Couverture et tests de mutation
+2. [Étape 2.2 - Couverture et tests de mutation](etape-2.2.md)
 3. Étape 2.3 - CI GitHub Actions et Dependabot
 4. Étape 2.4 - Revue de code par Claude
 

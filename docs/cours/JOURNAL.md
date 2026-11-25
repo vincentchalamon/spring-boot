@@ -6,11 +6,17 @@ Claude complète ce journal en fin de session. L'entrée la plus récente est en
 
 ## Reprise
 
-- **Étape en cours** : 2.1 validée. Prochaine étape : 2.2 (couverture et tests de mutation), pas encore rédigée.
-- **Prochaine action** : `git switch main && git pull`, puis demander "On attaque l'étape 2.2" ; Claude rédige `etape-2.2.md`.
+- **Étape en cours** : 2.2 (couverture et tests de mutation), rédigée, pas commencée.
+- **Prochaine action** : lire la théorie du cycle A de [l'étape 2.2](chapitre-02/etape-2.2.md), puis A1 (branche `ch02/02-coverage-mutation` depuis `main` à jour).
 - **Questions en attente** : traduction du contenu des recettes (plusieurs langues par recette), à décider en fin de projet.
 
 ---
+
+## 2026-11-25 - Préparation de l'étape 2.2
+
+- **Cours** : `etape-2.2.md` ; mémo Maven complété (executions multiples, dépendances de plugin, rapports, `-DskipPitest`). Exemples exécutés sur `shop` (JaCoCo 0.8.16, PIT 1.30.2, pitest-junit5-plugin 1.2.3, compatible JUnit 6).
+- **Constaté sur une copie du projet** : couverture des lignes 80 % (`RecipeType` et `Diet` jamais exécutés), branches 96 % ; PIT `DEFAULTS` 100 %, `STRONGER` 94 % avec deux survivants sur la condition de `Quantity.parse` (exercice B2).
+- **Décisions** : voir le plan (`STRONGER`, PIT dans `verify`).
 
 ## 2026-11-25 - Étape 2.1 validée
 
