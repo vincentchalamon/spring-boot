@@ -1,9 +1,7 @@
 {
   "editor.formatOnSave": true,
   "[java]": {
-    "editor.codeActionsOnSave": {
-      "source.organizeImports": "explicit"
-    }
+    "editor.formatOnSave": false
   },
   "java.configuration.updateBuildConfiguration": "automatic",
   "files.insertFinalNewline": true,
