@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.math.BigDecimal;
-
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -21,16 +20,16 @@ class QuantityTest {
 
     @ParameterizedTest
     @CsvSource({
-            "0 g, 0",
-            "-2 g, -2",
+        "0 g, 0",
+        "-2 g, -2",
     })
     void rejectsNonPositiveValue(String input, String expectedValue) {
         assertThatThrownBy(() -> Quantity.parse(input))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("Quantity must be a positive number, got \"%s\"."
-                        .formatted(expectedValue));
+                .hasMessage("Quantity must be a positive number, got \"%s\".".formatted(expectedValue));
     }
 
+    @SuppressWarnings("NullAway")
     @Test
     void rejectsNullUnit() {
         assertThatThrownBy(() -> new Quantity(new BigDecimal("2.5"), null))
@@ -38,6 +37,7 @@ class QuantityTest {
                 .hasMessage("Unit cannot be null.");
     }
 
+    @SuppressWarnings("NullAway")
     @Test
     void rejectsNullQuantity() {
         assertThatThrownBy(() -> new Quantity(null, Unit.GRAM))
@@ -47,18 +47,14 @@ class QuantityTest {
 
     @Test
     void rejectsInvalidUnit() {
-        assertThatThrownBy(() -> Quantity.parse("2.5 kg"))
-                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Quantity.parse("2.5 kg")).isInstanceOf(IllegalArgumentException.class);
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {
-            "",
-            " ",
-            "250g",
-            "250  ",
-            "250  g",
-    })
+    @ValueSource(
+            strings = {
+                "", " ", "250g", "250  ", "250  g", "250 g ",
+            })
     void rejectsInvalidInputFormat(String input) {
         assertThatThrownBy(() -> Quantity.parse(input))
                 .isInstanceOf(IllegalArgumentException.class)
@@ -67,15 +63,15 @@ class QuantityTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {
-            "2,5 g",
-            "abc g",
-            "NaN l",
-            "Infinity g",
-    })
+    @ValueSource(
+            strings = {
+                "2,5 g",
+                "abc g",
+                "NaN l",
+                "Infinity g",
+            })
     void rejectsInvalidQuantityNumber(String input) {
-        assertThatThrownBy(() -> Quantity.parse(input))
-                .isInstanceOf(NumberFormatException.class);
+        assertThatThrownBy(() -> Quantity.parse(input)).isInstanceOf(NumberFormatException.class);
     }
 
     @Test

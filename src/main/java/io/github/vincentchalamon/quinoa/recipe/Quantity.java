@@ -16,8 +16,8 @@ record Quantity(BigDecimal value, Unit unit) {
     }
 
     static Quantity parse(String input) {
-        String[] parts = input.split(" ");
-        if (parts.length != 2) {
+        String[] parts = input.split(" ", -1);
+        if (parts.length != 2 || parts[0].isBlank() || parts[1].isBlank()) {
             throw new IllegalArgumentException(
                     "Argument is not correctly formatted, expecting: \"<quantity> <unit>\", got \"%s\"."
                             .formatted(input));
