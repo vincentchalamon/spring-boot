@@ -53,7 +53,7 @@ class QuantityTest {
     @ParameterizedTest
     @ValueSource(
             strings = {
-                "", " ", "250g", "250  ", "250  g",
+                "", " ", "250g", "250  ", "250  g", "250 g ",
             })
     void rejectsInvalidInputFormat(String input) {
         assertThatThrownBy(() -> Quantity.parse(input))
