@@ -7,10 +7,10 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
-
 import org.jspecify.annotations.Nullable;
 
-record Ingredient(String name, @Nullable String precision, @Nullable Quantity quantity) {
+record Ingredient(
+        String name, @Nullable String precision, @Nullable Quantity quantity) {
     Ingredient {
         Objects.requireNonNull(name, "Ingredient name cannot be null.");
         if (name.isBlank()) {
@@ -40,7 +40,8 @@ record Ingredient(String name, @Nullable String precision, @Nullable Quantity qu
         return ingredients.stream()
                 .map(ingredient -> ingredient.name().toLowerCase(Locale.ROOT))
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
-                .entrySet().stream()
+                .entrySet()
+                .stream()
                 .filter(entry -> entry.getValue() > 1)
                 .map(Map.Entry::getKey)
                 .collect(Collectors.toSet());

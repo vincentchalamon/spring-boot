@@ -10,14 +10,7 @@ import org.junit.jupiter.params.provider.EnumSource;
 
 class UnitTest {
     @ParameterizedTest
-    @CsvSource({
-            "g, GRAM",
-            "ml, MILLILITER",
-            "tsp, TEASPOON",
-            "branch, BRANCH",
-            "leaf, LEAF",
-            "jar, JAR"
-    })
+    @CsvSource({"g, GRAM", "ml, MILLILITER", "tsp, TEASPOON", "branch, BRANCH", "leaf, LEAF", "jar, JAR"})
     void findBySymbol(String symbol, Unit expectedUnit) {
         assertThat(Unit.fromSymbol(symbol)).isEqualTo(expectedUnit);
     }
