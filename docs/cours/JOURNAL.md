@@ -6,11 +6,17 @@ Claude complète ce journal en fin de session. L'entrée la plus récente est en
 
 ## Reprise
 
-- **Étape en cours** : 2.1 validée. Prochaine étape : 2.2 (couverture et tests de mutation), pas encore rédigée.
-- **Prochaine action** : `git switch main && git pull`, puis demander "On attaque l'étape 2.2" ; Claude rédige `etape-2.2.md`.
+- **Étape en cours** : 2.2 (couverture et tests de mutation), rédigée, pas commencée.
+- **Prochaine action** : lire la théorie du cycle A de [l'étape 2.2](chapitre-02/etape-2.2.md), puis A1 (branche `ch02/02-coverage-mutation` depuis `main` à jour).
 - **Questions en attente** : traduction du contenu des recettes (plusieurs langues par recette), à décider en fin de projet.
 
 ---
+
+## 2026-11-25 - Préparation de l'étape 2.2
+
+- **Cours** : `etape-2.2.md` ; mémo Maven complété (executions multiples, dépendances de plugin, rapports, `-DskipPitest`). Exemples exécutés sur `shop` (JaCoCo 0.8.16, PIT 1.30.2, pitest-junit5-plugin 1.2.3, compatible JUnit 6).
+- **Constaté sur une copie du projet** : couverture des lignes 80 % (`RecipeType` et `Diet` jamais exécutés), branches 96 % ; PIT `DEFAULTS` 100 %, `STRONGER` 94 % avec deux survivants sur la condition de `Quantity.parse` (exercice B2).
+- **Décisions** : voir le plan (`STRONGER`, PIT dans `verify`).
 
 ## 2026-11-25 - Étape 2.1 validée
 
@@ -18,7 +24,7 @@ Claude complète ce journal en fin de session. L'entrée la plus récente est en
 - **Initiatives** : configuration de la théorie essayée sur le projet avant les exercices ; ordre des commits choisi pour que chacun passe `verify` (le `fix:` avant `failOnWarning`) ; `--fixup` pour corriger un commit non poussé.
 - **Corrigé en revue** : `-Xplugin:ErrorProne` en double (`plug-in not found: ErrorProne`) ; bloc `"[java]": {}` vide, sans effet sur le formatage à l'enregistrement ; `<plugins>` avant `<pluginManagement>` (corrigé seul) ; idée de remplacer la condition de `parse` par un stream (ne compile pas, `map` ne retire rien, moins lisible) ; titre et description de PR, réécrits par Claude à la demande de Vincent.
 - **Appris** : plugins, goals, executions, phases par défaut (`enforce` à `validate`, `check` à `verify`) ; `<configuration>` au niveau plugin pour les goals lancés en ligne de commande (`spotless:apply`) ; intervalles de versions ; réglages VSCode par langage ; Error Prone tourne dans `javac`, pas dans VSCode ; `ReturnValueIgnored` (immuabilité de `BigDecimal`), `StringSplitter` (`split` supprime les chaînes vides finales) ; NullAway et `@SuppressWarnings` ciblé ; `failOnWarning`.
-- **Flou** : phase d'Enforcer, d'abord placée à `verify` (corrigé en validation) ; B2 d'abord "sans erreur" (vérification probablement faite dans VSCode, non confirmé).
+- **Flou** : phase d'Enforcer, d'abord placée à `verify` (corrigé en validation) ; B2 d'abord "sans erreur" avec `./mvnw compile` : probablement lancé avant que l'enregistrement soit effectif. À surveiller.
 - **À consolider** : description de PR, toujours le point faible (titre partiel, `feat:` pour de l'outillage, changement de comportement non énoncé, "Comment c'est testé" sans les erreurs volontaires). Exemple de référence : la description de la PR #20. Le `return null` de B3 n'a pas été fait par Vincent (démontré par Claude dans la PR).
 - **Cours** : étape 2.1 précisée (réglage `editor.formatOnSave` nommé en A4, pièges `-Xplugin` en double et `Shift+Alt+F`) ; section "Commandes" de `CLAUDE.md` complétée.
 

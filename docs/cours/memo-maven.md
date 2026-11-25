@@ -34,6 +34,8 @@ Toujours `./mvnw`, jamais `mvn`.
 | `./mvnw test -Dtest='FooTest#bar'` | un seul test |
 | `./mvnw spotless:apply` | reformate le code (étape 2.1) |
 | `./mvnw spotless:check` | vérifie le formatage sans rien modifier |
+| `./mvnw test-compile pitest:mutationCoverage` | tests de mutation seuls (étape 2.2) |
+| `./mvnw verify -DskipPitest` | build complet sans PIT, plus rapide |
 
 Options :
 
@@ -81,6 +83,12 @@ Détails : [étape 2.1](chapitre-02/etape-2.1.md).
 Intervalles de versions : `[25,)` = 25 ou plus ; `[3.9,4)` = 3.9 inclus à 4 exclu.
 
 Options de la JVM de Maven : `.mvn/jvm.config` (une option par ligne).
+
+Plusieurs executions d'un même plugin : un `<id>` distinct pour chacune. Dans une même phase, elles s'exécutent dans l'ordre de déclaration.
+
+Dépendance d'un plugin (`<dependencies>` dans `<plugin>`) : sert au plugin seul, n'arrive ni dans le code ni dans le `.jar`.
+
+Rapports : `target/site/jacoco/index.html` (couverture), `target/pit-reports/index.html` (mutation).
 
 ## Squelette de `pom.xml`
 
