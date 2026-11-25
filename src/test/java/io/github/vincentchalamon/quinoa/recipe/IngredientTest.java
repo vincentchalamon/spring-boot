@@ -13,6 +13,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 
 class IngredientTest {
+    @SuppressWarnings("NullAway")
     @Test
     void rejectsNullName() {
         assertThatThrownBy(() -> new Ingredient(null, null, null))

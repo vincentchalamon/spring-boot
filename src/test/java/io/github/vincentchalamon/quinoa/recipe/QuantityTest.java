@@ -29,6 +29,7 @@ class QuantityTest {
                 .hasMessage("Quantity must be a positive number, got \"%s\".".formatted(expectedValue));
     }
 
+    @SuppressWarnings("NullAway")
     @Test
     void rejectsNullUnit() {
         assertThatThrownBy(() -> new Quantity(new BigDecimal("2.5"), null))
@@ -36,6 +37,7 @@ class QuantityTest {
                 .hasMessage("Unit cannot be null.");
     }
 
+    @SuppressWarnings("NullAway")
     @Test
     void rejectsNullQuantity() {
         assertThatThrownBy(() -> new Quantity(null, Unit.GRAM))
