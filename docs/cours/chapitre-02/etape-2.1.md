@@ -662,6 +662,7 @@ Après passage à `split(" ", -1)` et ajout du `@SuppressWarnings` : `BUILD SUCC
 - **Options d'Error Prone dans des `<arg>` séparés** : `-Xep:...` seul dans un `<arg>` est passé à `javac`, qui répond `error: invalid flag: -Xep:NullAway:ERROR`. Tout dans l'`<arg>` de `-Xplugin:ErrorProne`.
 - **`.mvn/jvm.config` oublié** : `An exception has occurred in the compiler`, puis `IllegalAccessError: ... module jdk.compiler does not export com.sun.tools.javac.api`. Ce n'est pas un bug de `javac`, malgré le message.
 - **"Ça compile dans VSCode"** : VSCode n'exécute ni Error Prone ni NullAway. Seul `./mvnw compile` fait foi.
+- **Commande lancée avant l'enregistrement** : Maven lit le disque, pas l'éditeur. Un point blanc sur l'onglet signale un fichier non enregistré.
 - **`@SuppressWarnings` trop large** : sur une classe ou sans nom de règle, il masque aussi les vraies erreurs.
 - **Correctif proposé appliqué sans réfléchir** : `Did you mean` est une piste. Pour `StringSplitter`, il ajoute une dépendance et change le comportement.
 
