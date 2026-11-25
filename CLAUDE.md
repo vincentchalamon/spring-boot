@@ -148,7 +148,12 @@ Toujours utiliser la **dernière version stable** au moment de l'étape : la vé
 
 ## Commandes
 
-À compléter au fil du cours (chapitres 1-3).
+- `./mvnw -ntp clean verify` : commande de référence (Enforcer, compilation avec Error Prone et NullAway, tests, `spotless:check`).
+- `./mvnw -ntp spotless:apply` : formatage du code Java (palantir-java-format), avant chaque commit. VSCode ne formate pas le Java à l'enregistrement.
+- `./mvnw -ntp test -Dtest='FooTest#bar'` : un seul test.
+- Les erreurs Error Prone et NullAway n'apparaissent que via Maven, pas dans VSCode.
+
+À compléter au fil du cours (chapitres 2-3).
 
 ## Hors périmètre
 

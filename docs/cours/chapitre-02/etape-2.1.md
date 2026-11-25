@@ -11,16 +11,16 @@
 
 Avancement :
 
-- [ ] A1. Créer la branche
-- [ ] A2. Maven Enforcer (avec une erreur volontaire)
-- [ ] A3. Spotless : premier `check`
-- [ ] A4. VSCode et formatage du projet
-- [ ] B1. Error Prone
-- [ ] B2. Une erreur volontaire sur `Quantity`
-- [ ] B3. NullAway
-- [ ] B4. Les avertissements deviennent des erreurs
-- [ ] B5. Committer et ouvrir la PR
-- [ ] Validation en session
+- [x] A1. Créer la branche
+- [x] A2. Maven Enforcer (avec une erreur volontaire)
+- [x] A3. Spotless : premier `check`
+- [x] A4. VSCode et formatage du projet
+- [x] B1. Error Prone
+- [x] B2. Une erreur volontaire sur `Quantity`
+- [x] B3. NullAway
+- [x] B4. Les avertissements deviennent des erreurs
+- [x] B5. Committer et ouvrir la PR
+- [x] Validation en session
 
 Astuce : `Ctrl+Shift+O` affiche le plan du document.
 
@@ -285,6 +285,7 @@ Les fichiers JSON, YAML et Markdown restent formatés par VSCode.
 - **Commentaire de fin de ligne** : s'il dépasse 120 caractères, palantir le coupe en deux lignes, mal placées. Relisez le diff après `apply`, et mettez ces commentaires au-dessus de la ligne.
 - **`spotless:apply` modifie vos fichiers** : committez votre travail avant, pour pouvoir relire le diff du formatage seul.
 - **Indentation en 2 espaces partout** : c'est google-java-format, pas palantir. Vérifiez la balise.
+- **`Shift+Alt+F` sur un fichier Java** : "Format Document" utilise toujours le formateur d'Eclipse. Pour Java, seul `./mvnw spotless:apply` formate.
 
 ### Vérifiez votre compréhension
 
@@ -362,7 +363,11 @@ git commit -m "build: add Spotless with palantir-java-format"
 
 Durée : 20 min. Modèle : section "L'IDE formate, le build vérifie".
 
-1. Dans `.vscode/settings.json`, le bloc `"[java]"` contient déjà l'organisation des imports à l'enregistrement. Remplacez son contenu : formatage à l'enregistrement désactivé pour Java, plus d'organisation des imports. Les réglages globaux (`editor.formatOnSave`) restent.
+1. Dans `.vscode/settings.json`, le bloc `"[java]"` contient déjà l'organisation des imports à l'enregistrement. Remplacez son contenu :
+   - plus d'organisation des imports (palantir s'en charge) ;
+   - le réglage `editor.formatOnSave`, avec la valeur inverse du réglage global. Un bloc `"[java]": {}` vide ne change rien : le réglage global s'appliquerait encore.
+
+   Le `"editor.formatOnSave": true` global reste, pour JSON, YAML et Markdown.
 2. Lancez :
 
    ```bash
@@ -653,6 +658,7 @@ Après passage à `split(" ", -1)` et ajout du `@SuppressWarnings` : `BUILD SUCC
 
 ### Pièges
 
+- **`-Xplugin:ErrorProne` en double** (un `<arg>` avec options, un autre sans) : `plug-in not found: ErrorProne`. Le plugin est bien trouvé, c'est le doublon qui fait échouer `javac`. Un seul `-Xplugin:ErrorProne` dans tout le bloc.
 - **Options d'Error Prone dans des `<arg>` séparés** : `-Xep:...` seul dans un `<arg>` est passé à `javac`, qui répond `error: invalid flag: -Xep:NullAway:ERROR`. Tout dans l'`<arg>` de `-Xplugin:ErrorProne`.
 - **`.mvn/jvm.config` oublié** : `An exception has occurred in the compiler`, puis `IllegalAccessError: ... module jdk.compiler does not export com.sun.tools.javac.api`. Ce n'est pas un bug de `javac`, malgré le message.
 - **"Ça compile dans VSCode"** : VSCode n'exécute ni Error Prone ni NullAway. Seul `./mvnw compile` fait foi.
@@ -792,11 +798,11 @@ En session, Claude :
 
 Points vérifiables :
 
-- [ ] `./mvnw clean verify` passe depuis un clone propre, sans avertissement de compilation.
-- [ ] Un fichier mal indenté fait échouer `./mvnw verify` ; `./mvnw spotless:apply` le corrige.
-- [ ] Un `return null;` dans une méthode d'un package `@NullMarked` fait échouer la compilation.
-- [ ] Chaque `@SuppressWarnings("NullAway")` porte sur un seul test, qui passe `null` exprès.
-- [ ] Le comportement de `Quantity.parse` sur une entrée vide est inchangé, et l'espace final est testé.
+- [x] `./mvnw clean verify` passe depuis un clone propre, sans avertissement de compilation.
+- [x] Un fichier mal indenté fait échouer `./mvnw verify` ; `./mvnw spotless:apply` le corrige.
+- [x] Un `return null;` dans une méthode d'un package `@NullMarked` fait échouer la compilation.
+- [x] Chaque `@SuppressWarnings("NullAway")` porte sur un seul test, qui passe `null` exprès.
+- [x] Le comportement de `Quantity.parse` sur une entrée vide est inchangé, et l'espace final est testé.
 
 Questions "expliquez" :
 

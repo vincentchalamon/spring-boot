@@ -117,7 +117,7 @@ Fil rouge `Quantity` : la même valeur est réécrite à chaque étape avec un m
 
 Apport au projet : formatage, analyse statique, couverture, tests de mutation, CI et revue automatique sur chaque PR. Détail : [chapitre-02](chapitre-02/README.md).
 
-- [ ] **2.1 Formatage et analyse statique**
+- [x] **2.1 Formatage et analyse statique**
   - Objectif : faire porter le style et les erreurs courantes par l'outillage.
   - Notions : plugins Maven, goals, executions et phases ; Maven Enforcer (version de Java et de Maven, intervalles de versions) ; Spotless + palantir-java-format (équivalent de PHP-CS-Fixer) ; Error Prone et NullAway (équivalent de PHPStan, vérification du contrat JSpecify), `failOnWarning`, `@SuppressWarnings` ciblé.
   - Livrable : configuration dans le `pom.xml` et `.mvn/jvm.config` ; projet reformaté ; avertissement `StringSplitter` de `Quantity.parse` traité ; `./mvnw verify` échoue sur un code mal formaté ou une erreur détectée.
